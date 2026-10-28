@@ -17,37 +17,45 @@
     "test": "node --test 'src/**/*.test.ts'"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.3.2",
-    "@astrojs/markdown-remark": "^7.3.1",
+    "@astrojs/cloudflare": "^14.4.2",
+    "@astrojs/markdown-remark": "^7.3.4",
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.4",
-    "astro": "^7.3.3",
+    "astro": "^7.4.2",
     "limax": "4.2.3"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/mdx": "^8.1.1",
     "@eslint/js": "^10.0.1",
     "@fontsource/hanken-grotesk": "^5.3.0",
     "@fontsource/newsreader": "^5.3.0",
     "@lhci/cli": "^0.15.1",
     "astro-compress": "^2.4.3",
     "esbuild": "0.28.2",
-    "eslint": "^10.11.0",
+    "eslint": "^10.13.0",
     "eslint-plugin-astro": "^3.2.1",
-    "globals": "^17.12.0",
+    "globals": "^17.13.0",
     "mdast-util-to-string": "^4.0.0",
-    "prettier": "^3.9.8",
-    "prettier-plugin-astro": "^1.0.1",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
     "reading-time": "^1.5.0",
-    "satori": "^0.33.4",
-    "sharp": "^0.35.4",
+    "satori": "^0.33.5",
+    "sharp": "^0.35.5",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.70.0",
-    "wrangler": "^4.135.0"
+    "typescript-eslint": "^8.72.1",
+    "wrangler": "^4.154.0"
   },
   "type": "module",
   "engines": {
     "node": ">=22.0.0"
   },
-  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977",
+  "pnpm": {
+    "overrides": {
+      "sharp@0.35.3": "0.35.5",
+      "svgo@4.0.2": "4.1.0",
+      "fflate@0.7.3": "0.7.5",
+      "undici@7.29.1": "7.30.1"
+    }
+  }
 }
