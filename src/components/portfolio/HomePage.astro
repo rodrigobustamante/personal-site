@@ -16,13 +16,58 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const { t, tl } = useTranslations(lang);
+const { t } = useTranslations(lang);
 // The two latest posts in this language.
 const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === lang).slice(0, 2);
 // Selected work: the design system leads, the two platforms follow.
 const SELECTED = ['hangar-design-system', 'mining-supplier-platform', 'latam-airlines-home'];
 const work = await getWork(lang);
 const selected = SELECTED.map((slug) => work.find((entry) => workSlug(entry) === slug)).filter((e) => e !== undefined);
+// Experience, newest first. The two LATAM Home roles are one entry.
+const timeline: {
+  years: string;
+  sector: string;
+  loc: string;
+  company: string;
+  highlight: string;
+  roles: [string, string?][];
+  href: string;
+  cta: string;
+}[] = [
+  {
+    years: `Apr 2026 — ${t('exp.present')}`,
+    sector: t('exp.vantaz.sector'),
+    loc: t('exp.vantaz.loc'),
+    company: 'Vantaz Analytics',
+    highlight: t('exp.vantaz.highlight'),
+    roles: [['Software Architect']],
+    href: '/work/mining-supplier-platform',
+    cta: t('exp.vantaz.cs'),
+  },
+  {
+    years: 'Oct 2024 — Mar 2026',
+    sector: t('exp.hangar.sector'),
+    loc: t('exp.hangar.loc'),
+    company: 'Hangar Design System — LATAM Airlines',
+    highlight: t('exp.hangar.highlight'),
+    roles: [['Software Architect']],
+    href: '/work/hangar-design-system',
+    cta: t('exp.hangar.cs'),
+  },
+  {
+    years: 'Aug 2020 — Sep 2024',
+    sector: t('exp.dme-latam.sector'),
+    loc: t('exp.dme-latam.loc'),
+    company: 'Digital Marketing Engage — LATAM Airlines',
+    highlight: t('exp.dme-latam.highlight'),
+    roles: [
+      ['Senior Software Engineer', 'Jul 2023 — Sep 2024'],
+      ['Web UI Developer · Globant', 'Aug 2020 — Jun 2023'],
+    ],
+    href: '/work/latam-airlines-home',
+    cta: t('exp.dme.cs'),
+  },
+];
 ---
 
 <PortfolioLayout
@@ -223,178 +268,39 @@ const selected = SELECTED.map((slug) => work.find((entry) => workSlug(entry) ===
           <p class="section-sub">{t('exp.sub')}</p>
         </div>
 
+        <!-- One entry per company: dates, role, one highlight and the case study.
+             The bullets and the stack live in the case studies and the CV. -->
         <div class="timeline">
-          <!-- Vantaz Analytics -->
-          <article class="entry reveal">
-            <aside class="entry-aside">
-              <div class="entry-years">Apr 2026 — {t('exp.present')}</div>
-              <div class="entry-sector">{t('exp.vantaz.sector')}</div>
-              <div class="entry-loc">{t('exp.vantaz.loc')}</div>
-            </aside>
-            <div class="entry-main">
-              <h3 class="entry-company">Vantaz Analytics</h3>
-              <div class="entry-highlight">
-                <span class="star">✦</span>
-                {t('exp.vantaz.highlight')}
-              </div>
-              <div class="role">
-                <div class="role-head">
-                  <span class="role-title">Software Architect</span>
+          {timeline.map((entry) => (
+            <article class="entry reveal">
+              <aside class="entry-aside">
+                <div class="entry-years">{entry.years}</div>
+                <div class="entry-sector">{entry.sector}</div>
+                <div class="entry-loc">{entry.loc}</div>
+              </aside>
+              <div class="entry-main">
+                <h3 class="entry-company">{entry.company}</h3>
+                <div class="entry-highlight">
+                  <span class="star">✦</span>
+                  {entry.highlight}
                 </div>
-                <ul class="role-bullets">
-                  {tl('exp.vantaz.bullets').map((b) => (
-                    <li>{b}</li>
-                  ))}
-                </ul>
+                {entry.roles.map(([title, period]) => (
+                  <div class="role">
+                    <div class="role-head">
+                      <span class="role-title">{title}</span>
+                      {period && <span class="role-period">{period}</span>}
+                    </div>
+                  </div>
+                ))}
+                <a class="cs-link" href={localizedPath(entry.href, lang)}>
+                  {entry.cta}
+                  <span class="arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
               </div>
-              <div class="entry-stack">
-                <span class="chip">Next.js</span>
-                <span class="chip">React</span>
-                <span class="chip">TypeScript</span>
-                <span class="chip">FastAPI</span>
-                <span class="chip">Python</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">Azure</span>
-                <span class="chip">Azure DevOps</span>
-                <span class="chip">Playwright</span>
-                <span class="chip">Tailwind CSS</span>
-              </div>
-              <a class="cs-link" href={localizedPath('/work/mining-supplier-platform', lang)}>
-                {t('exp.vantaz.cs')}
-                <span class="arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            </div>
-          </article>
-
-          <!-- Hangar Design System — LATAM Airlines -->
-          <article class="entry reveal">
-            <aside class="entry-aside">
-              <div class="entry-years">Oct 2024 — Mar 2026</div>
-              <div class="entry-sector">{t('exp.hangar.sector')}</div>
-              <div class="entry-loc">{t('exp.hangar.loc')}</div>
-            </aside>
-            <div class="entry-main">
-              <h3 class="entry-company">Hangar Design System — LATAM Airlines</h3>
-              <div class="entry-highlight">
-                <span class="star">✦</span>
-                {t('exp.hangar.highlight')}
-              </div>
-              <div class="role">
-                <div class="role-head">
-                  <span class="role-title">Software Architect</span>
-                </div>
-                <ul class="role-bullets">
-                  {tl('exp.hangar.bullets').map((b) => (
-                    <li>{b}</li>
-                  ))}
-                </ul>
-              </div>
-              <div class="entry-stack">
-                <span class="chip">React</span>
-                <span class="chip">React Native</span>
-                <span class="chip">Next.js</span>
-                <span class="chip">TypeScript</span>
-                <span class="chip">GCP</span>
-                <span class="chip">Terraform Cloud</span>
-                <span class="chip">GitLab CI</span>
-                <span class="chip">Docker</span>
-                <span class="chip">Redis</span>
-                <span class="chip">Storybook</span>
-              </div>
-              <a class="cs-link" href={localizedPath('/work/hangar-design-system', lang)}>
-                {t('exp.hangar.cs')}
-                <span class="arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            </div>
-          </article>
-
-          <!-- Digital Marketing Engage — LATAM Airlines -->
-          <article class="entry reveal">
-            <aside class="entry-aside">
-              <div class="entry-years">Jul 2023 — Sep 2024</div>
-              <div class="entry-sector">{t('exp.dme-latam.sector')}</div>
-              <div class="entry-loc">{t('exp.dme-latam.loc')}</div>
-            </aside>
-            <div class="entry-main">
-              <h3 class="entry-company">Digital Marketing Engage — LATAM Airlines</h3>
-              <div class="entry-highlight">
-                <span class="star">✦</span>
-                {t('exp.dme-latam.highlight')}
-              </div>
-              <div class="role">
-                <div class="role-head">
-                  <span class="role-title">Senior Software Engineer</span>
-                </div>
-                <ul class="role-bullets">
-                  {tl('exp.dme-latam.bullets').map((b) => (
-                    <li>{b}</li>
-                  ))}
-                </ul>
-              </div>
-              <div class="entry-stack">
-                <span class="chip">React</span>
-                <span class="chip">Next.js</span>
-                <span class="chip">TypeScript</span>
-                <span class="chip">Node.js</span>
-                <span class="chip">Express</span>
-                <span class="chip">Redis</span>
-                <span class="chip">Jenkins</span>
-                <span class="chip">Micro-frontends</span>
-              </div>
-              <a class="cs-link" href={localizedPath('/work/latam-airlines-home', lang)}>
-                {t('exp.dme.cs')}
-                <span class="arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            </div>
-          </article>
-
-          <!-- Digital Marketing Engage — Globant / LATAM Airlines -->
-          <article class="entry reveal">
-            <aside class="entry-aside">
-              <div class="entry-years">Aug 2020 — Jun 2023</div>
-              <div class="entry-sector">{t('exp.dme-globant.sector')}</div>
-              <div class="entry-loc">{t('exp.dme-globant.loc')}</div>
-            </aside>
-            <div class="entry-main">
-              <h3 class="entry-company">Digital Marketing Engage — LATAM Airlines</h3>
-              <div class="entry-highlight">
-                <span class="star">✦</span>
-                {t('exp.dme-globant.highlight')}
-              </div>
-              <div class="role">
-                <div class="role-head">
-                  <span class="role-title">Web UI Developer — Senior / SSr Adv</span>
-                </div>
-                <ul class="role-bullets">
-                  {tl('exp.dme-globant.bullets').map((b) => (
-                    <li>{b}</li>
-                  ))}
-                </ul>
-              </div>
-              <div class="entry-stack">
-                <span class="chip">React</span>
-                <span class="chip">Next.js</span>
-                <span class="chip">TypeScript</span>
-                <span class="chip">Node.js</span>
-                <span class="chip">Express</span>
-                <span class="chip">Redis</span>
-                <span class="chip">Jenkins</span>
-                <span class="chip">Micro-frontends</span>
-              </div>
-              <a class="cs-link" href={localizedPath('/work/latam-airlines-home', lang)}>
-                {t('exp.dme.cs')}
-                <span class="arrow" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            </div>
-          </article>
+            </article>
+          ))}
         </div>
 
         <!-- Before 2020: one line per role; the detail lives in the CV -->
@@ -1140,36 +1046,6 @@ const selected = SELECTED.map((slug) => work.find((entry) => workSlug(entry) ===
     color: var(--muted);
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
-  }
-  .role-bullets {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .role-bullets li {
-    max-width: 68ch;
-    position: relative;
-    padding-left: 22px;
-    font-size: 16px;
-    color: var(--ink-soft);
-    line-height: 1.55;
-    text-wrap: pretty;
-  }
-  .role-bullets li::before {
-    content: '';
-    position: absolute;
-    left: 2px;
-    top: 11px;
-    width: 7px;
-    height: 1px;
-    background: var(--accent);
-  }
-  .entry-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 22px;
   }
 
   @media (max-width: 680px) {

@@ -62,23 +62,10 @@ export const ui = {
     'exp.vantaz.sector': 'Mining · Enterprise Software',
     'exp.vantaz.loc': 'Madrid, Spain · Remote',
     'exp.vantaz.highlight': 'Supplier management platform for a copper miner, built from the ground up',
-    'exp.vantaz.bullets': [
-      'Architected and built from scratch the supplier management platform of a Chilean copper mining company, bringing contract letters, new-supplier onboarding and supplier risk into a single system.',
-      'Set up a monorepo with one Next.js app per module and shared TypeScript packages (UI kit, typed API client, auth) on top of a FastAPI and PostgreSQL backend.',
-      "Integrated Entra ID with role-based permissions, DocuSign e-signature through signed webhooks, Microsoft Graph, Azure OpenAI, and master-data ingestion from the client's source systems.",
-      'Built the Azure DevOps pipeline — lint, type checks, tests, Playwright and Trivy scans — with per-environment builds and production releases through a staging-slot swap on Azure App Service behind Front Door.',
-      'Keep an audit wiki in sync with the code on every PR, covering access control, traceability and data handling.',
-    ],
 
     'exp.hangar.sector': 'Design Systems · Architecture',
     'exp.hangar.loc': 'Madrid & Santiago · Remote',
     'exp.hangar.highlight': 'Design system and boilerplate used by 50+ teams across the company',
-    'exp.hangar.bullets': [
-      'Led design and development of cross-functional UI solutions for LATAM Airlines, creating boilerplate code for 50+ teams across different areas of the company, focusing on performance, accessibility, and best practices.',
-      'Developed and maintained components for React and React Native projects, providing support across all business areas.',
-      'Designed and built CI/CD pipelines, application deployment workflows, and created MCPs and Skills for use by teams and agents.',
-      'Automated processes and built data collection and metrics tools to support decision-making.',
-    ],
     'exp.vantaz.cs': 'Read the case study',
     'exp.hangar.cs': 'Read the case study',
     'exp.dme.cs': 'Read the case study',
@@ -86,22 +73,6 @@ export const ui = {
     'exp.dme-latam.sector': 'Digital Marketing · Platforms',
     'exp.dme-latam.loc': 'Madrid & Santiago · Remote',
     'exp.dme-latam.highlight': 'Home page of the largest airline in Latin America',
-    'exp.dme-latam.bullets': [
-      'Developed new functionalities for the home page of the largest airline in Latin America.',
-      'Implemented new features for the backoffice used to load promotions displayed on the home page and offer landings.',
-      'Built microfrontends in React/Next.js and BFF APIs with Node.js and Express, using Redis as in-memory database and Jenkins for CI/CD.',
-      'Worked in 2-week Scrum sprints managed via Jira.',
-    ],
-
-    'exp.dme-globant.sector': 'Digital Marketing · Consulting',
-    'exp.dme-globant.loc': 'Santiago, Chile · Remote',
-    'exp.dme-globant.highlight': 'Microfrontends and BFFs for global operations',
-    'exp.dme-globant.bullets': [
-      'Developed new functionalities for the home page and promotions backoffice of the largest airline in Latin America.',
-      'Built microfrontends in React/Next.js and BFF APIs with Node.js and Express for real-time promotions management.',
-      'Used Redis as in-memory database and Jenkins for integration and continuous delivery.',
-      'Worked in 2-week Scrum sprints managed via Jira.',
-    ],
 
     'exp.simple-sme.highlight': 'Subject Matter Expert during the COVID-19 crisis',
 
@@ -250,23 +221,10 @@ export const ui = {
     'exp.vantaz.sector': 'Minería · Software empresarial',
     'exp.vantaz.loc': 'Madrid, España · Remoto',
     'exp.vantaz.highlight': 'Plataforma de gestión de proveedores para una minera de cobre, construida desde cero',
-    'exp.vantaz.bullets': [
-      'Diseñé y construí desde cero la plataforma de gestión de proveedores de una minera de cobre chilena, que reúne en un solo sistema las cartas contractuales, el registro de proveedores nuevos y sus riesgos.',
-      'Definí un monorepo con una app Next.js por módulo y paquetes TypeScript compartidos (UI, cliente de API tipado, autenticación) sobre un backend FastAPI con PostgreSQL.',
-      'Integré Entra ID con permisos por rol, firma electrónica con DocuSign mediante webhooks firmados, Microsoft Graph, Azure OpenAI y la ingesta de datos maestros desde los sistemas del cliente.',
-      'Construí el pipeline en Azure DevOps: lint, tipos, tests, Playwright y escaneo con Trivy, con builds por ambiente y despliegue a producción vía swap de slot en Azure App Service detrás de Front Door.',
-      'Mantengo una documentación de auditoría sincronizada con el código en cada PR, que cubre control de acceso, trazabilidad y manejo de datos.',
-    ],
 
     'exp.hangar.sector': 'Design Systems · Arquitectura',
     'exp.hangar.loc': 'Madrid y Santiago · Remoto',
     'exp.hangar.highlight': 'Design system y boilerplate usados por más de 50 equipos en toda la compañía',
-    'exp.hangar.bullets': [
-      'Lideré el diseño y desarrollo de soluciones UI transversales para LATAM Airlines, creando código boilerplate para más de 50 equipos en distintas áreas con foco en performance, accesibilidad y buenas prácticas.',
-      'Desarrollé y mantuve componentes para proyectos en React y React Native, brindando soporte a equipos en todo el negocio.',
-      'Diseñé y construí los distintos pipelines de CI/CD, el despliegue de aplicaciones y la creación de MCPs y Skills para uso de equipos y agentes.',
-      'Automaticé procesos y construí herramientas de recopilación de datos y métricas para la toma de decisiones.',
-    ],
     'exp.vantaz.cs': 'Leer el caso de estudio',
     'exp.hangar.cs': 'Leer el caso de estudio',
     'exp.dme.cs': 'Leer el caso de estudio',
@@ -274,22 +232,6 @@ export const ui = {
     'exp.dme-latam.sector': 'Marketing digital · Plataformas',
     'exp.dme-latam.loc': 'Madrid y Santiago · Remoto',
     'exp.dme-latam.highlight': 'Home de la aerolínea más grande de Latinoamérica',
-    'exp.dme-latam.bullets': [
-      'Desarrollé nuevas funcionalidades para la página principal de la aerolínea más grande de América Latina.',
-      'Implementé nuevas funcionalidades en el backoffice donde se cargan las promociones mostradas en la home y en los distintos landings de ofertas.',
-      'Trabajé con microfrontends en React/Next.js y APIs BFF con Node.js y Express, usando Redis como base de datos en memoria y Jenkins para CI/CD.',
-      'Metodología: Scrum con sprints de 2 semanas gestionados en Jira.',
-    ],
-
-    'exp.dme-globant.sector': 'Marketing digital · Consultoría',
-    'exp.dme-globant.loc': 'Santiago, Chile · Remoto',
-    'exp.dme-globant.highlight': 'Microfrontends y BFFs para operaciones globales',
-    'exp.dme-globant.bullets': [
-      'Desarrollé nuevas funcionalidades para la página principal y el backoffice de promociones de la aerolínea más grande de América Latina.',
-      'Construí microfrontends con React/Next.js y APIs BFF con Node.js y Express para gestión de promociones en tiempo real.',
-      'Usé Redis como base de datos en memoria y Jenkins para integración y entrega continua.',
-      'Metodología: Scrum con sprints de 2 semanas gestionados en Jira.',
-    ],
 
     'exp.simple-sme.highlight': 'Subject Matter Expert durante la crisis del COVID-19',
 
