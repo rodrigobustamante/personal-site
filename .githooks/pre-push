@@ -1,0 +1,18 @@
+#!/bin/sh
+# Runs the same checks as CI before anything leaves the machine. Lighthouse
+# stays in CI only: it's slow and its timing-dependent failures don't
+# reproduce locally. Skip once with `git push --no-verify`.
+set -e
+
+# Node and pnpm may live outside the PATH a GUI git client inherits.
+export PATH="$HOME/Library/pnpm/bin:$PATH"
+
+echo "pre-push: prettier"
+pnpm exec prettier --check . --log-level warn
+echo "pre-push: eslint"
+pnpm lint:eslint
+echo "pre-push: tests"
+pnpm test >/dev/null
+echo "pre-push: build"
+pnpm build >/dev/null
+echo "pre-push: all checks passed"
