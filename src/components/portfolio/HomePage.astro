@@ -9,6 +9,7 @@ import { localizedPath } from '~/i18n/paths';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 import { getDatetime, getFormattedDate, getPostLang } from '~/utils/utils';
+import { getWork, workScene, workSlug } from '~/utils/work';
 
 interface Props {
   lang: Lang;
@@ -18,6 +19,10 @@ const { lang } = Astro.props;
 const { t, tl } = useTranslations(lang);
 // The two latest posts in this language.
 const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === lang).slice(0, 2);
+// Selected work: the design system leads, the two platforms follow.
+const SELECTED = ['hangar-design-system', 'mining-supplier-platform', 'latam-airlines-home'];
+const work = await getWork(lang);
+const selected = SELECTED.map((slug) => work.find((entry) => workSlug(entry) === slug)).filter((e) => e !== undefined);
 ---
 
 <PortfolioLayout
@@ -152,11 +157,68 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
       </script>
     </section>
 
+    <!-- ——— Selected work ———
+         The record leads: the design system as the large plate, the two
+         platforms beside it. Each plate is one link to its case study. -->
+    <section id="selected" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">01</span>
+          <h2 class="section-title">{t('work.index.title')}</h2>
+          <p class="section-sub">{t('selected.sub')}</p>
+        </div>
+        <div class="selected-grid reveal">
+          {selected.map((entry, i) => {
+            const slug = workSlug(entry);
+            const scene = workScene(slug);
+            return (
+              <a class:list={['plate', { 'plate--lead': i === 0 }]} href={localizedPath(`/work/${slug}`, lang)}>
+                {scene && <Diorama scene={scene} />}
+                <div class="plate-text">
+                  <h3 class="plate-title">{entry.data.title}</h3>
+                  <p class="plate-sub">{entry.data.subtitle}</p>
+                  <p class="plate-meta">
+                    {i === 0 && <span class="plate-figure">50+ {t('hero.stat.teams')}</span>}
+                    {entry.data.client && <span>{entry.data.client}</span>}
+                    <span>{entry.data.period}</span>
+                  </p>
+                  <span class="plate-cta">
+                    {t('work.read')}
+                    <span class="arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+        <div class="selected-more reveal">
+          <a class="more-link" href={localizedPath('/work', lang)}>
+            {t('selected.all')}
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 18L18 6M9 6h9v9"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ——— Experience ——— -->
     <section id="work" class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-num">01</span>
+          <span class="section-num">02</span>
           <h2 class="section-title">{t('exp.title')}</h2>
           <p class="section-sub">{t('exp.sub')}</p>
         </div>
@@ -370,7 +432,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     <section id="journey" class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-num">02</span>
+          <span class="section-num">03</span>
           <h2 class="section-title">{t('journey.title')}</h2>
           <p class="section-sub">{t('journey.sub')}</p>
         </div>
@@ -397,7 +459,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     <section id="skills" class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-num">03</span>
+          <span class="section-num">04</span>
           <h2 class="section-title">Skills</h2>
           <p class="section-sub">{t('skills.sub')}</p>
         </div>
@@ -462,7 +524,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     <section id="projects" class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-num">04</span>
+          <span class="section-num">05</span>
           <h2 class="section-title">{t('projects.title')}</h2>
           <p class="section-sub">{t('projects.sub')}</p>
         </div>
@@ -598,6 +660,39 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
               </a>
             </div>
           </article>
+          <!-- The site itself, as the fourth project: its specimen reads the
+               live tokens, so it changes with the style and theme toggles. -->
+          <article class="project-card project-card--site">
+            <div class="site-specimen" aria-hidden="true">
+              <span class="specimen-aa">Aa</span>
+              <span class="specimen-swatches">
+                <i style="--sw: var(--ink)"></i>
+                <i style="--sw: var(--accent)"></i>
+                <i style="--sw: var(--accent-2)"></i>
+                <i style="--sw: var(--accent-3)"></i>
+                <i style="--sw: var(--paper-2)"></i>
+              </span>
+            </div>
+            <div class="project-head">
+              <h3 class="project-name">{t('projects.site.title')}</h3>
+              <span class="project-status">{t('projects.site.status')}</span>
+            </div>
+            <p class="project-desc">{t('projects.site.desc')}</p>
+            <div class="project-links">
+              <a class="project-link" href={localizedPath('/system', lang)}>
+                {t('footer.system')}
+                <span class="arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+              <a class="project-link" href={localizedPath('/uses', lang)}>
+                {t('footer.uses')}
+                <span class="arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -606,7 +701,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     <section id="education" class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-num">05</span>
+          <span class="section-num">06</span>
           <h2 class="section-title">{t('edu.title')}</h2>
           <p class="section-sub">{t('edu.sub')}</p>
         </div>
@@ -649,7 +744,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     <section id="writing" class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="section-num">06</span>
+          <span class="section-num">07</span>
           <h2 class="section-title">{t('writing.title')}</h2>
           <p class="section-sub">{t('writing.sub')}</p>
         </div>
@@ -1408,6 +1503,165 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     letter-spacing: 0.05em;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* ——— Selected work ———
+     Same ruled ledger as the projects grid: the lead plate spans the row with
+     its scene beside the text, the other two share the row below. */
+  .selected-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .plate {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: clamp(24px, 3vw, 36px);
+    background: var(--paper);
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .plate:hover {
+    background: var(--card);
+  }
+  .plate:focus-visible {
+    outline-offset: -4px;
+  }
+  .plate .dio {
+    margin: 0;
+  }
+  /* One box for the two smaller scenes, so their titles line up. */
+  .plate:not(.plate--lead) .dio {
+    aspect-ratio: 16 / 10 !important;
+    min-height: 0;
+  }
+  .plate:not(.plate--lead) .dio svg {
+    height: 100%;
+  }
+  .plate--lead {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(28px, 4vw, 56px);
+    padding: clamp(28px, 4vw, 48px);
+  }
+  .plate-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .plate-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .plate--lead .plate-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .plate-sub {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  .plate--lead .plate-sub {
+    margin-top: 16px;
+    font-family: var(--serif);
+    font-size: clamp(19px, 2vw, 22px);
+    font-weight: 300;
+    line-height: 1.42;
+  }
+  .plate-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    margin-top: 16px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .plate-figure {
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+  .plate-cta {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 20px;
+    font-weight: 500;
+    color: var(--accent-ink);
+  }
+  .plate-cta .arrow {
+    display: inline-block;
+    margin-left: 4px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .plate-cta .arrow {
+      transition: transform 0.2s ease;
+    }
+    .plate:hover .plate-cta .arrow {
+      transform: translateX(3px);
+    }
+  }
+  @media (max-width: 860px) {
+    .plate--lead {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+  }
+  @media (max-width: 680px) {
+    .selected-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .selected-more {
+    margin-top: 28px;
+  }
+
+  /* ——— This site: a live specimen of the tokens ——— */
+  .site-specimen {
+    aspect-ratio: 16 / 10;
+    margin: 0 0 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    border-radius: 8px;
+    background: var(--paper-2);
+  }
+  .specimen-aa {
+    font-family: var(--serif);
+    font-size: clamp(64px, 9vw, 96px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .specimen-swatches {
+    display: flex;
+    gap: 8px;
+  }
+  .specimen-swatches i {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--sw);
+    box-shadow: inset 0 0 0 1px var(--line);
   }
 
   /* ——— Projects grid ——— */

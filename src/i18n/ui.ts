@@ -39,6 +39,8 @@ export const ui = {
     'work.meta.scope': 'Scope',
     'work.meta.stack': 'Stack',
     'work.read': 'Read the case study',
+    'selected.sub': 'Three systems to open first, starting with the design system.',
+    'selected.all': 'All work',
 
     // <meta name="description"> of the home page
     'meta.home.title': 'Rodrigo Bustamante — Design Systems & Frontend Architecture',
@@ -152,6 +154,10 @@ export const ui = {
     'projects.a11y.desc':
       'Accessibility scanner for any URL: runs axe-core in a real browser, scores the page from 0 to 100 and exports PDF reports. Every request goes through an egress proxy that blocks private addresses.',
     'projects.a11y.status': 'In development',
+    'projects.site.title': 'This site',
+    'projects.site.status': "You're on it",
+    'projects.site.desc':
+      'The site you are reading, with its tokens, components and build published: two styles, light and dark, and Lighthouse CI on every pull request.',
     'projects.repo': 'Repo',
     'projects.demo': 'Demo',
     'projects.more': 'Case study',
@@ -220,6 +226,8 @@ export const ui = {
     'work.meta.scope': 'Alcance',
     'work.meta.stack': 'Stack',
     'work.read': 'Leer el caso de estudio',
+    'selected.sub': 'Tres sistemas para abrir primero, empezando por el design system.',
+    'selected.all': 'Todos los trabajos',
 
     // <meta name="description"> de la home
     'meta.home.title': 'Rodrigo Bustamante — Design systems y arquitectura frontend',
@@ -335,6 +343,10 @@ export const ui = {
     'projects.a11y.desc':
       'Escáner de accesibilidad para cualquier URL: ejecuta axe-core en un navegador real, puntúa la página de 0 a 100 y exporta informes en PDF. Cada petición pasa por un proxy de salida que bloquea las direcciones privadas.',
     'projects.a11y.status': 'En desarrollo',
+    'projects.site.title': 'Este sitio',
+    'projects.site.status': 'Estás aquí',
+    'projects.site.desc':
+      'El sitio que estás leyendo, con sus tokens, componentes y build publicados: dos estilos, modo claro y oscuro, y Lighthouse CI en cada pull request.',
     'projects.repo': 'Repo',
     'projects.demo': 'Demo',
     'projects.more': 'Caso de estudio',
