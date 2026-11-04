@@ -853,7 +853,7 @@ const timeline: {
     aspect-ratio: 4 / 5;
     object-fit: cover;
     border: 1px solid var(--line);
-    border-radius: 7px;
+    border-radius: 8px;
   }
   @media (max-width: 860px) {
     .hero-grid {
@@ -895,23 +895,6 @@ const timeline: {
     .hero-grid .hero-stat:not(:last-child)::after {
       content: none;
     }
-  }
-  .hero-avail {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--ink-soft);
-    margin-bottom: 30px;
-  }
-  .hero-avail .pip {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: oklch(0.7 0.15 150);
-    box-shadow: 0 0 0 4px color-mix(in oklab, oklch(0.7 0.15 150) 22%, transparent);
-    flex-shrink: 0;
   }
   .hero-role {
     font-size: 16px;
@@ -1090,6 +1073,10 @@ const timeline: {
     font-size: 16px;
     color: var(--muted);
     font-variant-numeric: tabular-nums;
+  }
+  .earlier-org,
+  .earlier-note {
+    text-wrap: pretty;
   }
   .earlier-org {
     font-size: 19px;
@@ -1755,6 +1742,15 @@ const timeline: {
   }
   .project-link:hover {
     opacity: 0.75;
+  }
+  /* Small text links keep their look but get a 44px-tall hit area. */
+  .project-link {
+    position: relative;
+  }
+  .project-link::before {
+    content: '';
+    position: absolute;
+    inset: -8px -4px;
   }
   .project-link .arrow {
     margin-left: 3px;
