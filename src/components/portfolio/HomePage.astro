@@ -105,30 +105,32 @@ const timeline: {
         <div class="hero-left">
           <div class="hero-role">{t('hero.role')}</div>
           <h1 class="hero-name">
-            Rodrigo
-            <br />
+            Rodrigo <br />
             Bustamante
           </h1>
           <p class="hero-pitch">{t('hero.pitch')}</p>
           <div class="hero-stats">
             <span class="hero-stat">
-              <b data-count="9">9</b> {t('hero.stat.years')}
+              <b data-count="9" aria-hidden="true">
+                9
+              </b>
+              <span class="sr-only">9</span> {t('hero.stat.years')}
             </span>
             <span class="hero-stat">
-              <b data-count="50" data-suffix="+">
+              <b data-count="50" data-suffix="+" aria-hidden="true">
                 50+
-              </b>{' '}
-              {t('hero.stat.teams')}
+              </b>
+              <span class="sr-only">50+</span> {t('hero.stat.teams')}
             </span>
             <span class="hero-stat">
               <b>{t('hero.stat.millions')}</b>
               {t('hero.stat.millions.sub')}
             </span>
             <span class="hero-stat">
-              <b data-count="10" data-suffix="+">
+              <b data-count="10" data-suffix="+" aria-hidden="true">
                 10+
-              </b>{' '}
-              {t('hero.stat.countries')}
+              </b>
+              <span class="sr-only">10+</span> {t('hero.stat.countries')}
             </span>
           </div>
           <div class="hero-meta">
@@ -294,6 +296,7 @@ const timeline: {
                 ))}
                 <a class="cs-link" href={localizedPath(entry.href, lang)}>
                   {entry.cta}
+                  <span class="sr-only">: {entry.company}</span>
                   <span class="arrow" aria-hidden="true">
                     →
                   </span>
@@ -656,7 +659,7 @@ const timeline: {
         </div>
         <div class="posts reveal">
           {posts.map((post) => (
-            <a class="post" href={getPermalink(post.permalink, 'post')}>
+            <article class="post">
               <div class="post-meta">
                 {post.category && <span class="post-cat">{post.category.replaceAll('-', ' ')}</span>}
                 <span class="dot" />
@@ -670,7 +673,11 @@ const timeline: {
                   </>
                 )}
               </div>
-              <h3 class="post-title">{post.title}</h3>
+              <h3 class="post-title">
+                <a class="post-link" href={getPermalink(post.permalink, 'post')}>
+                  {post.title}
+                </a>
+              </h3>
               {post.excerpt && <p class="post-excerpt">{post.excerpt}</p>}
               <div class="post-foot">
                 <div class="post-tags">
@@ -694,7 +701,7 @@ const timeline: {
                   </svg>
                 </span>
               </div>
-            </a>
+            </article>
           ))}
         </div>
         <div class="writing-more reveal">
@@ -752,6 +759,22 @@ const timeline: {
               </svg>
               rbustamantejelvez@gmail.com
             </a>
+            <a class="btn btn-ghost" href="/uploads/cv-rodrigo-bustamante-general.pdf" target="_blank" rel="noopener">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4.5 20.5h15"></path>
+              </svg>
+              {t('hero.cta.cv')}
+            </a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/rod-bustamante/" target="_blank" rel="noopener">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
                 <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45z"></path>
@@ -765,6 +788,38 @@ const timeline: {
               GitHub
             </a>
           </div>
+          <!-- For webmail users, where mailto: opens nothing: the address can be copied. -->
+          <p class="contact-note">
+            {t('contact.note')}
+            <button
+              type="button"
+              class="contact-copy"
+              data-copy="rbustamantejelvez@gmail.com"
+              data-done={t('contact.copied')}
+              data-fail={t('contact.copyFail')}
+            >
+              {t('contact.copy')}
+            </button>
+          </p>
+          <p class="contact-status" role="status" aria-live="polite"></p>
+          <script is:inline>
+            (function () {
+              const btn = document.querySelector('.contact-copy');
+              const status = document.querySelector('.contact-status');
+              if (!btn || !status) return;
+              let timer;
+              btn.addEventListener('click', async () => {
+                try {
+                  await navigator.clipboard.writeText(btn.dataset.copy);
+                  status.textContent = btn.dataset.done;
+                } catch {
+                  status.textContent = btn.dataset.fail;
+                }
+                clearTimeout(timer);
+                timer = setTimeout(() => (status.textContent = ''), 5000);
+              });
+            })();
+          </script>
         </div>
       </div>
     </section>
@@ -1246,7 +1301,10 @@ const timeline: {
       grid-template-columns: 1fr;
     }
   }
+  /* The title is the link; its ::after stretches over the card, so the card
+     stays one click target but is announced by its title, not its date. */
   .post {
+    position: relative;
     background: var(--paper);
     padding: 30px;
     display: flex;
@@ -1257,6 +1315,22 @@ const timeline: {
   }
   .post:hover {
     background: var(--card);
+  }
+  .post-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .post-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .post-link:focus-visible {
+    outline: none;
+  }
+  .post:has(.post-link:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
   }
   .post-meta {
     display: flex;
@@ -1367,6 +1441,38 @@ const timeline: {
     max-width: 50ch;
     margin: 0 auto 36px;
     text-wrap: pretty;
+  }
+  .contact-note {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0 10px;
+    margin-top: 28px;
+    font-size: 15px;
+    color: var(--muted);
+    text-wrap: balance;
+  }
+  .contact-copy {
+    padding: 10px 2px;
+    font: inherit;
+    font-weight: 500;
+    color: var(--accent-ink);
+    background: none;
+    border: 0;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  .contact-copy:hover {
+    text-decoration-thickness: 2px;
+  }
+  .contact-status {
+    min-height: 1.5em;
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--ink-soft);
   }
   .contact-links {
     display: flex;
