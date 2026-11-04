@@ -1,9 +1,31 @@
 export const ui = {
   en: {
+    'nav.about': 'About',
+    'hero.workauth': "Exempt from Spain's Labour Market Test",
+    'hero.proof': "This site's tokens and components are public",
+    'skills.title': 'Skills',
+    'about.title': 'About',
+    'about.intro': 'What I do and where to check it, the tools I reach for, and the details recruiters ask about.',
+    'about.cap.title': 'What I do',
+    'about.cap.ds.name': 'Design systems',
+    'about.cap.ds.body':
+      'I build and run design systems that many teams adopt, and the tooling around them. Hangar is used by 50+ teams at LATAM Airlines.',
+    'about.cap.ds.proof': 'Hangar Design System',
+    'about.cap.arch.name': 'Frontend architecture',
+    'about.cap.arch.body':
+      'I design platforms from the ground up: a monorepo with one app per module, shared packages, a typed API client, auth and the pipeline that ships it.',
+    'about.cap.arch.proof': 'Supplier Management Platform',
+    'about.cap.perf.name': 'Web performance',
+    'about.cap.perf.body':
+      'Core Web Vitals and rendering strategy. I write about it, and this site runs Lighthouse CI on every pull request.',
+    'about.cap.perf.proof': 'Core Web Vitals guide',
+    'about.cap.a11y.name': 'Accessibility',
+    'about.cap.a11y.body':
+      'WCAG AA as the floor, checked with real tools: A11yScan runs axe-core in a real browser and scores any URL.',
+    'about.cap.a11y.proof': 'A11yScan',
     // nav
     'nav.home': 'Home',
     'nav.experience': 'Experience',
-    'nav.skills': 'Skills',
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
 
@@ -66,9 +88,6 @@ export const ui = {
     'exp.hangar.sector': 'Design Systems · Architecture',
     'exp.hangar.loc': 'Madrid & Santiago · Remote',
     'exp.hangar.highlight': 'Design system and boilerplate used by 50+ teams across the company',
-    'exp.vantaz.cs': 'Read the case study',
-    'exp.hangar.cs': 'Read the case study',
-    'exp.dme.cs': 'Read the case study',
 
     'exp.dme-latam.sector': 'Digital Marketing · Platforms',
     'exp.dme-latam.loc': 'Madrid & Santiago · Remote',
@@ -111,27 +130,6 @@ export const ui = {
     'edu.work-auth.v': "Chilean citizen. Exempt from Spain's Labour Market Test by bilateral treaty.",
 
     // projects
-    'projects.title': 'Projects',
-    'projects.sub': 'Side projects built to explore ideas I care about.',
-    'projects.pace.title': 'PACE',
-    'projects.pace.desc':
-      'Running analytics app integrated with Strava. Computes fitness, fatigue and form from your full training history, and an AI coach — Gemini, GPT‑4o or Claude, your choice — turns them into weekly and daily guidance.',
-    'projects.pace.status': 'In development',
-    'projects.intervalo.title': 'Intervalo',
-    'projects.intervalo.desc':
-      'Sonic visualization of metro networks (Santiago & Madrid) using GTFS open data, MapLibre GL JS, and the Web Audio API. Each train arriving at a station becomes a note.',
-    'projects.intervalo.status': 'In development',
-    'projects.a11y.title': 'A11yScan',
-    'projects.a11y.desc':
-      'Accessibility scanner for any URL: runs axe-core in a real browser, scores the page from 0 to 100 and exports PDF reports. Every request goes through an egress proxy that blocks private addresses.',
-    'projects.a11y.status': 'In development',
-    'projects.site.title': 'This site',
-    'projects.site.status': "You're on it",
-    'projects.site.desc':
-      'The site you are reading, with its tokens, components and build published: two styles, light and dark, and Lighthouse CI on every pull request.',
-    'projects.repo': 'Repo',
-    'projects.demo': 'Demo',
-    'projects.more': 'Case study',
 
     // writing
     'writing.title': 'Writing',
@@ -162,10 +160,33 @@ export const ui = {
   },
 
   es: {
+    'nav.about': 'Sobre mí',
+    'hero.workauth': 'Exento del Test de Mercado Laboral de España',
+    'hero.proof': 'Los tokens y componentes de este sitio son públicos',
+    'skills.title': 'Skills',
+    'about.title': 'Sobre mí',
+    'about.intro':
+      'Qué hago y dónde comprobarlo, las herramientas a las que recurro y los detalles que preguntan los reclutadores.',
+    'about.cap.title': 'Qué hago',
+    'about.cap.ds.name': 'Design systems',
+    'about.cap.ds.body':
+      'Construyo y mantengo design systems que adoptan muchos equipos, y las herramientas a su alrededor. Hangar lo usan más de 50 equipos en LATAM Airlines.',
+    'about.cap.ds.proof': 'Hangar Design System',
+    'about.cap.arch.name': 'Arquitectura frontend',
+    'about.cap.arch.body':
+      'Diseño plataformas desde cero: un monorepo con una app por módulo, paquetes compartidos, un cliente de API tipado, autenticación y el pipeline que lo despliega.',
+    'about.cap.arch.proof': 'Plataforma de gestión de proveedores',
+    'about.cap.perf.name': 'Rendimiento web',
+    'about.cap.perf.body':
+      'Core Web Vitals y estrategia de renderizado. Escribo sobre ello, y este sitio pasa Lighthouse CI en cada pull request.',
+    'about.cap.perf.proof': 'Guía de Core Web Vitals',
+    'about.cap.a11y.name': 'Accesibilidad',
+    'about.cap.a11y.body':
+      'WCAG AA como mínimo, comprobado con herramientas reales: A11yScan ejecuta axe-core en un navegador real y puntúa cualquier URL.',
+    'about.cap.a11y.proof': 'A11yScan',
     // nav
     'nav.home': 'Inicio',
     'nav.experience': 'Experiencia',
-    'nav.skills': 'Skills',
     'nav.blog': 'Blog',
     'nav.contact': 'Contacto',
 
@@ -229,9 +250,6 @@ export const ui = {
     'exp.hangar.sector': 'Design Systems · Arquitectura',
     'exp.hangar.loc': 'Madrid y Santiago · Remoto',
     'exp.hangar.highlight': 'Design system y boilerplate usados por más de 50 equipos en toda la compañía',
-    'exp.vantaz.cs': 'Leer el caso de estudio',
-    'exp.hangar.cs': 'Leer el caso de estudio',
-    'exp.dme.cs': 'Leer el caso de estudio',
 
     'exp.dme-latam.sector': 'Marketing digital · Plataformas',
     'exp.dme-latam.loc': 'Madrid y Santiago · Remoto',
@@ -275,27 +293,6 @@ export const ui = {
     'edu.work-auth.v': 'Ciudadano chileno. Exento del Test de Mercado Laboral de España por tratado bilateral.',
 
     // projects
-    'projects.title': 'Proyectos',
-    'projects.sub': 'Proyectos personales para explorar ideas que me importan.',
-    'projects.pace.title': 'PACE',
-    'projects.pace.desc':
-      'App de analítica de running integrada con Strava. Calcula forma física, fatiga y estado de forma con todo tu historial, y un coach con IA — Gemini, GPT‑4o o Claude, a elección — los convierte en recomendaciones semanales y diarias.',
-    'projects.pace.status': 'En desarrollo',
-    'projects.intervalo.title': 'Intervalo',
-    'projects.intervalo.desc':
-      'Visualización sonora de redes de metro (Santiago y Madrid) usando datos abiertos GTFS, MapLibre GL JS y la Web Audio API. Cada tren que llega a una estación se convierte en una nota.',
-    'projects.intervalo.status': 'En desarrollo',
-    'projects.a11y.title': 'A11yScan',
-    'projects.a11y.desc':
-      'Escáner de accesibilidad para cualquier URL: ejecuta axe-core en un navegador real, puntúa la página de 0 a 100 y exporta informes en PDF. Cada petición pasa por un proxy de salida que bloquea las direcciones privadas.',
-    'projects.a11y.status': 'En desarrollo',
-    'projects.site.title': 'Este sitio',
-    'projects.site.status': 'Estás aquí',
-    'projects.site.desc':
-      'El sitio que estás leyendo, con sus tokens, componentes y build publicados: dos estilos, modo claro y oscuro, y Lighthouse CI en cada pull request.',
-    'projects.repo': 'Repo',
-    'projects.demo': 'Demo',
-    'projects.more': 'Caso de estudio',
 
     // writing
     'writing.title': 'Blog',

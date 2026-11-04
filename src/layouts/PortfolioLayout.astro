@@ -786,18 +786,6 @@ const jsonLd = JSON.stringify({
         }
 
         /* Stack chips cascade in once their entry / card is revealed. */
-        .reveal .project-stack .chip {
-          opacity: 0;
-          transform: translateY(6px);
-          transition:
-            opacity 0.4s ease,
-            transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
-        }
-        .reveal.in .project-stack .chip {
-          opacity: 1;
-          transform: none;
-          transition-delay: calc(250ms + var(--chip-i, 0) * 35ms);
-        }
         .chip:nth-child(2) {
           --chip-i: 1;
         }

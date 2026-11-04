@@ -1,0 +1,364 @@
+---
+import PortfolioLayout from '~/layouts/PortfolioLayout.astro';
+import SiteHeader from '~/components/portfolio/SiteHeader.astro';
+import SiteFooter from '~/components/portfolio/SiteFooter.astro';
+import { useTranslations, type Lang } from '~/i18n/ui';
+import { localizedPath } from '~/i18n/paths';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const { t } = useTranslations(lang);
+
+// What I do, each claim pointing at the place that proves it.
+const capabilities = [
+  { key: 'ds', href: localizedPath('/work/hangar-design-system', lang) },
+  { key: 'arch', href: localizedPath('/work/mining-supplier-platform', lang) },
+  {
+    key: 'perf',
+    href:
+      lang === 'es'
+        ? '/blog/es/core-web-vitals-guia-completa-para-principiantes'
+        : '/blog/en/core-web-vitals-complete-guide-for-beginners',
+  },
+  { key: 'a11y', href: localizedPath('/work/a11y-web-validator', lang) },
+] as const;
+---
+
+<PortfolioLayout
+  title={`${t('about.title')} — Rodrigo Bustamante`}
+  description={t('about.intro')}
+  lang={lang}
+  ogImage={`/og/about/${lang}.png`}
+  hasLocalizedSibling
+>
+  <SiteHeader lang={lang} variant="portfolio" />
+
+  <main id="main">
+    <header class="about-head wrap">
+      <h1 class="about-title">{t('about.title')}</h1>
+      <p class="about-intro">{t('about.intro')}</p>
+    </header>
+
+    <!-- ——— Capabilities ——— -->
+    <section id="capabilities" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">01</span>
+          <h2 class="section-title">{t('about.cap.title')}</h2>
+        </div>
+        <ul class="caps reveal">
+          {capabilities.map(({ key, href }) => (
+            <li class="cap">
+              <h3 class="cap-name">{t(`about.cap.${key}.name` as Parameters<typeof t>[0])}</h3>
+              <p class="cap-body">{t(`about.cap.${key}.body` as Parameters<typeof t>[0])}</p>
+              <a class="cs-link" href={href}>
+                {t(`about.cap.${key}.proof` as Parameters<typeof t>[0])}
+                <span class="arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ——— Skills ——— -->
+    <section id="skills" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">02</span>
+          <h2 class="section-title">{t('skills.title')}</h2>
+          <p class="section-sub">{t('skills.sub')}</p>
+        </div>
+        <div class="skills-grid reveal">
+          <div class="skill-col">
+            <div class="skill-label">Frontend</div>
+            <div class="skill-items">
+              <span>React</span>
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>JavaScript (ES6+)</span>
+              <span>Async JS</span>
+              <span>Web Workers</span>
+              <span>Webpack</span>
+            </div>
+          </div>
+          <div class="skill-col">
+            <div class="skill-label">{t('skills.architecture')}</div>
+            <div class="skill-items">
+              <span>Design Systems</span>
+              <span>Micro-frontends</span>
+              <span>System Design</span>
+              <span>SOLID</span>
+              <span>TDD</span>
+              <span>CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-col">
+            <div class="skill-label">{t('skills.cloud')}</div>
+            <div class="skill-items">
+              <span>Google Cloud (GCP)</span>
+              <span>GitLab CI</span>
+              <span>Docker</span>
+              <span>Redis</span>
+              <span>MySQL</span>
+              <span>Node.js</span>
+            </div>
+          </div>
+          <div class="skill-col">
+            <div class="skill-label">{t('skills.viz')}</div>
+            <div class="skill-items">
+              <span>D3.js</span>
+              <span>HTML Canvas</span>
+              <span>Google Maps API</span>
+              <span>Lottie</span>
+              <span>Python</span>
+              <span>React Native</span>
+            </div>
+          </div>
+          <div class="skill-col">
+            <div class="skill-label">Testing</div>
+            <div class="skill-items">
+              <span>Jest</span>
+              <span>Cypress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ——— Education & beyond ——— -->
+    <section id="education" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="section-num">03</span>
+          <h2 class="section-title">{t('edu.title')}</h2>
+          <p class="section-sub">{t('edu.sub')}</p>
+        </div>
+        <div class="edu-layout reveal">
+          <div>
+            <div class="sub-h">{t('edu.section')}</div>
+            <div class="edu-card">
+              <div class="edu-school">Duoc UC</div>
+              <div class="edu-degree">{t('edu.degree')}</div>
+              <div class="edu-line">
+                <span>Santiago, Chile</span>
+                <span>·</span>
+                <span>2014 — 2017</span>
+              </div>
+              <div class="edu-notes">{t('edu.notes')}</div>
+            </div>
+          </div>
+          <div>
+            <div class="sub-h">{t('edu.details')}</div>
+            <div class="facts-list">
+              <div class="row">
+                <div class="k">{t('edu.industries.k')}</div>
+                <div class="v">{t('edu.industries.v')}</div>
+              </div>
+              <div class="row">
+                <div class="k">{t('edu.languages.k')}</div>
+                <div class="v">{t('edu.languages.v')}</div>
+              </div>
+              <div class="row">
+                <div class="k">{t('edu.work-auth.k')}</div>
+                <div class="v">{t('edu.work-auth.v')}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter lang={lang} />
+</PortfolioLayout>
+
+<style is:global>
+  .about-head {
+    padding-top: clamp(48px, 9vh, 110px);
+  }
+  .about-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 10vw, 104px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+  }
+  .about-intro {
+    margin-top: 20px;
+    max-width: 52ch;
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.6vw, 28px);
+    font-weight: 300;
+    line-height: 1.42;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  /* ——— Capabilities: a ruled 2×2 ledger, like the home grids ——— */
+  .caps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .cap {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(24px, 3vw, 36px);
+    background: var(--paper);
+  }
+  .cap-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .cap-body {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+    flex: 1;
+  }
+  .cap .cs-link {
+    align-self: flex-start;
+  }
+  @media (max-width: 680px) {
+    .caps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ——— Skills ——— */
+  .skills-grid {
+    display: grid;
+    /* One row of five groups; auto-fit left the fifth alone under four. */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .skill-col {
+    background: var(--paper);
+    padding: 26px 24px;
+  }
+  @media (max-width: 900px) {
+    .skills-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .skills-grid > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 560px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .skill-label {
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .skill-items span {
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+
+  /* ——— Education ——— */
+  .edu-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 5vw, 60px);
+  }
+  @media (max-width: 720px) {
+    .edu-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  .edu-school {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .edu-degree {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .edu-line {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .edu-notes {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    line-height: 1.55;
+    font-style: italic;
+    font-family: var(--serif);
+  }
+  .sub-h {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .facts-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .facts-list .row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .facts-list .row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .facts-list .k {
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .facts-list .v {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  @media (max-width: 460px) {
+    .facts-list .row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>

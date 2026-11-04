@@ -25,9 +25,9 @@ const altUrl =
 // One menu everywhere: the blog used to get a shorter one, which made the
 // header change under the visitor when moving between sections.
 const nav = [
-  { href: section('work'), label: t('nav.experience') },
   { href: localizedPath('/work', lang), label: t('nav.work'), current: /^\/work(\/|$)/.test(path) },
-  { href: section('skills'), label: t('nav.skills') },
+  { href: section('experience'), label: t('nav.experience') },
+  { href: localizedPath('/about', lang), label: t('nav.about'), current: path === '/about' },
   { href: blogHref, label: t('nav.blog'), current: /^\/blog(\/|$)/.test(path) },
   { href: section('contact'), label: t('nav.contact') },
 ];
