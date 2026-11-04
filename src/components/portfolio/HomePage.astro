@@ -34,6 +34,24 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
     <!-- ——— Hero ——— -->
     <section id="top" class="hero">
       <div class="wrap hero-grid">
+        <!-- The portrait comes first in the source so a slow first paint can't
+             render the text and then push it down when the portrait arrives
+             above it on mobile (CLS). The grid areas set the visual order. -->
+        <div class="hero-right">
+          <picture>
+            <source srcset="/images/portrait-crop.avif" type="image/avif" />
+            <source srcset="/images/portrait-crop.webp" type="image/webp" />
+            <img
+              src="/images/portrait-crop.webp"
+              alt="Rodrigo Bustamante"
+              class="hero-portrait"
+              width="608"
+              height="760"
+              fetchpriority="high"
+              loading="eager"
+            />
+          </picture>
+        </div>
         <div class="hero-left">
           <div class="hero-role">Design Engineer · Senior Frontend Engineer</div>
           <h1 class="hero-name">
@@ -63,34 +81,6 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
               {t('hero.stat.countries')}
             </span>
           </div>
-          <!--
-            Count-up for the hero stats. Inline and placed right after the markup
-            so the numbers reset to 0 before first paint; the server-rendered
-            values stay as the no-JS / reduced-motion fallback. Runs with the
-            hero intro, on the first page of the session (data-intro).
-          -->
-          <script is:inline>
-            (function () {
-              const intro = document.documentElement.hasAttribute('data-intro');
-              if (!intro || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-              const ease = (t) => 1 - Math.pow(1 - t, 3);
-              const duration = 1100;
-              document.querySelectorAll('.hero-stats [data-count]').forEach((el, i) => {
-                const target = +el.dataset.count;
-                const suffix = el.dataset.suffix || '';
-                // Lock the final width so the growing number doesn't shift its neighbours (CLS).
-                el.style.minWidth = el.getBoundingClientRect().width + 'px';
-                el.textContent = '0' + suffix;
-                // Starts as the stats row fades in (hero intro delay: 210ms).
-                const start = performance.now() + 200 + i * 120;
-                requestAnimationFrame(function tick(now) {
-                  const t = Math.min(Math.max((now - start) / duration, 0), 1);
-                  el.textContent = Math.round(ease(t) * target) + suffix;
-                  if (t < 1) requestAnimationFrame(tick);
-                });
-              });
-            })();
-          </script>
           <div class="hero-meta">
             {t('hero.location')}
             <span class="dot"></span>
@@ -131,22 +121,35 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
             </a>
           </div>
         </div>
-        <div class="hero-right">
-          <picture>
-            <source srcset="/images/portrait-crop.avif" type="image/avif" />
-            <source srcset="/images/portrait-crop.webp" type="image/webp" />
-            <img
-              src="/images/portrait-crop.webp"
-              alt="Rodrigo Bustamante"
-              class="hero-portrait"
-              width="608"
-              height="760"
-              fetchpriority="high"
-              loading="eager"
-            />
-          </picture>
-        </div>
       </div>
+      <!--
+        Count-up for the hero stats. Inline and placed right after the markup
+        so the numbers reset to 0 before first paint; the server-rendered
+        values stay as the no-JS / reduced-motion fallback. Runs with the
+        hero intro, on the first page of the session (data-intro).
+      -->
+      <script is:inline>
+        (function () {
+          const intro = document.documentElement.hasAttribute('data-intro');
+          if (!intro || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          const ease = (t) => 1 - Math.pow(1 - t, 3);
+          const duration = 1100;
+          document.querySelectorAll('.hero-stats [data-count]').forEach((el, i) => {
+            const target = +el.dataset.count;
+            const suffix = el.dataset.suffix || '';
+            // Lock the final width so the growing number doesn't shift its neighbours (CLS).
+            el.style.minWidth = el.getBoundingClientRect().width + 'px';
+            el.textContent = '0' + suffix;
+            // Starts as the stats row fades in (hero intro delay: 210ms).
+            const start = performance.now() + 200 + i * 120;
+            requestAnimationFrame(function tick(now) {
+              const t = Math.min(Math.max((now - start) / duration, 0), 1);
+              el.textContent = Math.round(ease(t) * target) + suffix;
+              if (t < 1) requestAnimationFrame(tick);
+            });
+          });
+        })();
+      </script>
     </section>
 
     <!-- ——— Experience ——— -->
@@ -777,8 +780,15 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
   .hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-areas: 'text portrait';
     gap: clamp(32px, 5vw, 72px);
     align-items: center;
+  }
+  .hero-left {
+    grid-area: text;
+  }
+  .hero-right {
+    grid-area: portrait;
   }
   .hero-portrait {
     display: block;
@@ -792,9 +802,9 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
   @media (max-width: 860px) {
     .hero-grid {
       grid-template-columns: 1fr;
+      grid-template-areas: 'portrait' 'text';
     }
     .hero-right {
-      order: -1;
       max-width: 320px;
     }
   }
