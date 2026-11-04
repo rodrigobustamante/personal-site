@@ -1,265 +1,274 @@
-# Rodrigo Bustamante — Personal Site · Design Spec
-
-Implementation brief for building this portfolio site. Aesthetic: **warm editorial** — cream paper background, a serif display face (Newsreader) paired with a grotesque sans (Hanken Grotesk), a single warm accent, generous whitespace, recruiter-friendly. No gradients, no emoji, no drop-shadow-heavy cards. Quiet and confident.
-
-The reference implementation is React + Babel (single page). You can build it in any stack (Next.js / Astro / plain HTML+CSS recommended). What matters is matching the **tokens, type scale, layout, and component specs** below.
-
+---
+name: Rodrigo Bustamante — Personal Site
+description: An annotated atlas of systems work. Serif editorial type and isometric dioramas over a cool indigo field, with one saturated accent.
+colors:
+  starlight-paper: 'oklch(0.975 0.01 270)'
+  starlight-paper-2: 'oklch(0.945 0.016 272)'
+  starlight-card: 'oklch(0.993 0.004 270)'
+  indigo-ink: 'oklch(0.25 0.06 278)'
+  indigo-ink-soft: 'oklch(0.38 0.06 278)'
+  indigo-muted: 'oklch(0.47 0.045 276)'
+  indigo-faint: 'oklch(0.6 0.035 274)'
+  indigo-line: 'oklch(0.88 0.022 272)'
+  indigo-line-soft: 'oklch(0.925 0.016 272)'
+  nebula-magenta: 'oklch(0.55 0.21 355)'
+  nebula-magenta-ink: 'oklch(0.5 0.2 355)'
+  sun-amber: 'oklch(0.64 0.15 64)'
+  aurora-teal: 'oklch(0.6 0.1 195)'
+  night-sky-indigo: 'oklch(0.2 0.05 278)'
+  night-sky-indigo-2: 'oklch(0.235 0.058 280)'
+  night-sky-card: 'oklch(0.255 0.062 281)'
+  starlight-ink: 'oklch(0.96 0.014 260)'
+  nebula-magenta-night: 'oklch(0.72 0.18 355)'
+  nebula-magenta-ink-night: 'oklch(0.8 0.13 355)'
+  paper-cream: 'oklch(0.972 0.013 79)'
+  paper-ink: 'oklch(0.27 0.018 55)'
+  paper-terracotta: 'oklch(0.565 0.125 42)'
+typography:
+  display:
+    fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif"
+    fontSize: 'clamp(48px, 10vw, 104px)'
+    fontWeight: 400
+    lineHeight: 0.96
+    letterSpacing: '-0.025em'
+  headline:
+    fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif"
+    fontSize: 'clamp(32px, 5vw, 50px)'
+    fontWeight: 400
+    lineHeight: 1.02
+    letterSpacing: '-0.02em'
+  title:
+    fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif"
+    fontSize: 'clamp(24px, 3.2vw, 32px)'
+    fontWeight: 500
+    lineHeight: 1.1
+    letterSpacing: '-0.015em'
+  lede:
+    fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif"
+    fontSize: 'clamp(20px, 2.6vw, 28px)'
+    fontWeight: 300
+    lineHeight: 1.42
+  body:
+    fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif"
+    fontSize: '17px'
+    fontWeight: 400
+    lineHeight: 1.6
+  label:
+    fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif"
+    fontSize: '12px'
+    fontWeight: 600
+    letterSpacing: '0.08em'
+rounded:
+  focus: '4px'
+  chip: '6px'
+  item: '8px'
+  panel: '14px'
+  pill: '999px'
+spacing:
+  page-pad: 'clamp(20px, 5vw, 64px)'
+  content-max: '1080px'
+  section-y: 'clamp(64px, 9vh, 110px)'
+  section-head: 'clamp(40px, 6vh, 64px)'
+components:
+  button-primary:
+    backgroundColor: '{colors.nebula-magenta}'
+    textColor: '{colors.starlight-card}'
+    rounded: '{rounded.pill}'
+    height: '50px'
+    padding: '0 24px'
+  button-ghost:
+    textColor: '{colors.indigo-ink}'
+    rounded: '{rounded.pill}'
+    height: '50px'
+    padding: '0 24px'
+  button-ghost-hover:
+    backgroundColor: '{colors.starlight-card}'
+  tool-button:
+    textColor: '{colors.indigo-ink-soft}'
+    rounded: '{rounded.pill}'
+    height: '36px'
+    padding: '0 12px'
+  chip:
+    backgroundColor: '{colors.starlight-card}'
+    textColor: '{colors.indigo-ink-soft}'
+    rounded: '{rounded.chip}'
+    padding: '4px 11px'
+  highlight-pill:
+    textColor: '{colors.nebula-magenta-ink}'
+    rounded: '{rounded.pill}'
+    padding: '5px 12px 5px 10px'
+  work-card:
+    backgroundColor: '{colors.starlight-paper-2}'
+    rounded: '{rounded.chip}'
+    padding: '28px 28px 24px'
+  nav-link:
+    textColor: '{colors.indigo-ink-soft}'
+    typography: '{typography.body}'
+    padding: '4px 0'
 ---
 
-## 1. Tech & structure
-
-- Single-page site, anchor-nav between sections.
-- **Bilingual (EN / ES)** — all copy lives in a data object keyed by locale; a toggle in the header swaps it. Persist choice in `localStorage` (`lang`). Default from `navigator.language`.
-- **Light / dark mode** — `data-theme="light|dark"` on `<html>`. Persist in `localStorage` (`theme`); default from `prefers-color-scheme`.
-- **Accent palette** is a runtime-swappable token set (see §3). Persist in `localStorage` (`palette`). Default **Terracotta** (see §3 for the Terracotta-vs-Indigo decision).
-- Scroll-reveal: sections fade/translate in on enter (`IntersectionObserver`), gated behind `@media (prefers-reduced-motion: no-preference)`.
-- Sticky header that gains a translucent blurred background + bottom border after scroll (`.scrolled`).
-
-### Section order (top → bottom)
-
-1. **Header** (sticky) — wordmark · nav · tools (lang toggle, theme toggle)
-2. **Hero** — two columns: text left, portrait right
-3. **Experience** (`01`) — company-grouped timeline
-4. **Skills** (`02`) — grouped grid
-5. **Education & beyond** (`03`) — education card + details list
-6. **Writing** (`04`) — blog post cards
-7. **Contact** (`05`) — big serif CTA
-8. **Footer** — credit + socials
-
----
-
-## 2. Typography
-
-| Token     | Stack                                                    |
-| --------- | -------------------------------------------------------- |
-| `--serif` | `'Newsreader', Georgia, 'Times New Roman', serif`        |
-| `--sans`  | `'Hanken Grotesk', system-ui, -apple-system, sans-serif` |
-
-Load from Google Fonts: Newsreader (optical 6–72, weights 300/400/500, plus italics 300/400/500) and Hanken Grotesk (400/500/600).
-
-**Serif** is for display: name, section titles, post titles, company names, the hero pitch, big numbers, contact CTA. Often italic for small editorial accents (section numbers, education notes).
-**Sans** is the body/UI face. Base body = `17px / 1.6`.
-
-Type scale (all serif unless noted, `clamp(min, vw, max)`):
-
-- Hero name: `clamp(48px, 10vw, 104px)`, weight 400, line-height 0.96, letter-spacing −0.025em, `white-space: pre-line` (name breaks across two lines).
-- Hero pitch: `clamp(20px, 2.6vw, 28px)`, weight 300, line-height 1.42, `max-width: 24ch`. Emphasised keywords use `<em>` → ink color + italic.
-- Contact title: `clamp(40px, 8vw, 80px)`, weight 400.
-- Section title: `clamp(32px, 5vw, 50px)`, weight 400, letter-spacing −0.02em.
-- Company name: `clamp(24px, 3.2vw, 32px)`, weight 500.
-- Post title: `23px`, weight 500.
-- Section number (italic serif): `16px`, accent color.
-- Body / bullets: `15.5–17px` sans.
-- Eyebrows / labels (sans): `12–15px`, `letter-spacing: 0.04–0.08em`, `text-transform: uppercase`.
-
----
-
-## 3. Color tokens
-
-All colors are **oklch**. Neutrals are warm (low chroma toward hue ~55–80). Accent is a single hue, swappable. Define neutrals on `:root` and `:root[data-theme='dark']`; set the accent trio (`--accent`, `--accent-ink`, `--accent-soft`) at runtime from the chosen palette + theme.
-
-### Neutrals — Light (warm paper)
-
-```css
---paper: oklch(0.972 0.013 79);
---paper-2: oklch(0.945 0.016 78);
---card: oklch(0.99 0.006 85);
---ink: oklch(0.27 0.018 55);
---ink-soft: oklch(0.42 0.02 52);
---muted: oklch(0.56 0.018 55);
---faint: oklch(0.7 0.015 60);
---line: oklch(0.88 0.014 72);
---line-soft: oklch(0.92 0.012 75);
-```
-
-### Neutrals — Dark
-
-```css
---paper: oklch(0.205 0.012 56);
---paper-2: oklch(0.245 0.014 56);
---card: oklch(0.255 0.014 56);
---ink: oklch(0.94 0.012 80);
---ink-soft: oklch(0.82 0.014 78);
---muted: oklch(0.68 0.016 70);
---faint: oklch(0.55 0.016 65);
---line: oklch(0.36 0.016 58);
---line-soft: oklch(0.31 0.014 58);
-```
-
-### Accent palettes
-
-Each palette defines 4 values: `l` = accent (light theme), `d` = accent (dark theme), `li` = accent-ink (light), `di` = accent-ink (dark). `accent-ink` is a darker/more-saturated variant used for small text on paper so it stays legible.
-
-```js
-const PALETTES = {
-  Terracotta: {
-    l: 'oklch(0.585 0.125 42)',
-    d: 'oklch(0.72 0.12 48)',
-    li: 'oklch(0.46 0.12 42)',
-    di: 'oklch(0.78 0.12 50)',
-  },
-  Ochre: { l: 'oklch(0.62 0.12 75)', d: 'oklch(0.78 0.11 82)', li: 'oklch(0.5 0.11 72)', di: 'oklch(0.82 0.11 84)' },
-  Olive: { l: 'oklch(0.55 0.09 130)', d: 'oklch(0.72 0.1 135)', li: 'oklch(0.45 0.09 128)', di: 'oklch(0.78 0.1 138)' },
-  Indigo: {
-    l: 'oklch(0.5 0.11 270)',
-    d: 'oklch(0.7 0.12 275)',
-    li: 'oklch(0.45 0.12 270)',
-    di: 'oklch(0.76 0.12 278)',
-  },
-  Plum: {
-    l: 'oklch(0.52 0.13 350)',
-    d: 'oklch(0.72 0.12 352)',
-    li: 'oklch(0.45 0.13 350)',
-    di: 'oklch(0.78 0.12 354)',
-  },
-};
-```
+# Design System: Rodrigo Bustamante — Personal Site
 
-Apply (per theme):
+## Overview
 
-```js
---accent      = isDark ? p.d  : p.l;
---accent-ink  = isDark ? p.di : p.li;
---accent-soft = color-mix(in oklab, <accent> <isDark?16:12>%, transparent);
-```
+**Creative North Star: "The Annotated Atlas"**
 
-#### ⚑ Palette decision: Terracotta vs Indigo
+The site reads like an atlas of systems Rodrigo has built: each plate is an isometric diorama, each caption a serif title, and each figure (years, teams, passengers) a piece of evidence set in the margin. Type does the editorial work, the dioramas do the explaining, and the chrome stays out of the way. The default **Cosmos** style sets this on a cool indigo field with one saturated accent and two illustration-only companions, after the flat, saturated look of Kurzgesagt illustrations. **Paper** is the alternative style: the site's original warm cream with earthy accents.
 
-You're choosing between two directions. Both use the **same warm cream neutrals** above — only the accent hue changes.
+Density is low and the rhythm unhurried: one 1080px column, generous section spacing, thin rules between sections. Components are precise and quiet, with fine 1px borders and small radii. Fills and shadows are reserved for the one action that matters on a screen. The accent earns its place: it marks the primary action, the current location, and small editorial details (section numbers, highlight pills, link underlines), never large surfaces.
 
-- **Terracotta** (`hue 42`) — warm, earthy, editorial. Harmonises with the cream paper (everything stays in the warm family). Feels crafted / human. **Recommended** — it's cohesive with the portrait (brick-wall background) and the overall tone.
-- **Indigo** (`hue 270`) — cool, technical, "engineer" signal. Creates a deliberate warm-paper / cool-accent contrast that reads more corporate-tech. Sharper, less cozy.
+The system is fully themed: two styles (Cosmos, Paper), each with light and dark modes and a runtime-switchable accent. Every combination keeps WCAG AA contrast, and the `/system` page renders the live tokens and components.
 
-Pick one as the shipped default; the palette switcher can keep the rest as options, or you can drop the switcher and hard-code the winner. If unsure, ship **Terracotta** and keep Indigo as the alternate.
+**Key Characteristics:**
 
-### Usage rules
+- Serif display (Newsreader) over a grotesque body (Hanken Grotesk); italic serif for small editorial marks.
+- Cool indigo neutrals with a single saturated accent; amber and teal companions only inside illustrations.
+- Flat surfaces separated by tone and 1px lines; shadows are rare and tied to state or floating layers.
+- Pills for actions and tools, small 6px corners for content containers and chips.
+- Motion is short and directional (reveal on scroll, arrows nudging the way they point), and fully disabled under `prefers-reduced-motion`.
 
-- `--accent`: primary button fill, wordmark dot, section numbers, bullet ticks, hover underlines, post arrow, big-number context.
-- `--accent-ink`: small accent **text** on paper (eyebrow role label, post category, highlight pills, links) — never use raw `--accent` for small text on light bg, contrast is too low.
-- `--accent-soft`: pill/badge backgrounds, `::selection` background.
-- Primary button text = near-white on light (`oklch(0.99 0.01 85)`); on dark, dark ink (`oklch(0.18 0.02 56)`).
+## Colors
 
----
+A cool, low-chroma indigo field carrying one high-chroma accent, all authored in OKLCH so every theme and accent keeps predictable contrast.
 
-## 4. Spacing & layout primitives
+### Primary
 
-```css
---maxw: 1080px; /* content column */
---pad: clamp(20px, 5vw, 64px); /* horizontal page padding */
-```
+- **Nebula Magenta** (`nebula-magenta`): Cosmos's default accent. It fills the primary button, colours the wordmark dot, the nav underline and the active-link marker, and draws hover borders on work cards. In dark mode it lightens to **Nebula Magenta, Night** (`nebula-magenta-night`).
+- **Nebula Magenta Ink** (`nebula-magenta-ink`): the accent's text variant, used for small accent text on paper (section numbers, highlight pills, case-study links, the active language) and for the focus outline. In dark mode, **Nebula Magenta Ink, Night** (`nebula-magenta-ink-night`).
+- **Accent soft** (12% of the accent in light mode, 16% in dark, mixed in OKLab): pill backgrounds and the `::selection` background.
 
-- `.wrap` = `max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad)`.
-- Section vertical rhythm: `padding: clamp(64px, 9vh, 110px) 0`. Consecutive sections separated by a `1px solid var(--line-soft)` top border.
-- Section head bottom margin: `clamp(40px, 6vh, 64px)`.
-- Radii: buttons/pills `999px`; chips & portrait `6–7px`; grid cards `14px`; tweaks panel `16px`.
-- **Use flex/grid with `gap`** for all groups (chips, nav, stats, CTAs) — not inline-flow or per-item margins.
+The accent can be switched at runtime. Cosmos offers Magenta (default), Coral, Amber, Teal, Sky and Violet; Paper offers Terracotta (default), Ochre, Olive, Indigo and Plum. Each one ships four values: accent and ink, for light and dark (`src/utils/palettes.ts`).
 
-Breakpoints (max-width): `860` (hero stacks), `760` (hide nav), `720` (edu stacks), `680` (timeline/posts stack), `640`, `460`.
+### Secondary
 
----
+- **Sun Amber** (`sun-amber`) and **Aurora Teal** (`aurora-teal`): the illustration companions to Magenta (`--accent-2`, `--accent-3`), so the dioramas keep three distinct hues. Every Cosmos accent carries its own pair. In Paper both companions collapse into the accent.
 
-## 5. Component specs
+### Neutral
 
-### Header
+- **Starlight Paper** (`starlight-paper`): page background in Cosmos light.
+- **Starlight Paper 2** (`starlight-paper-2`): the recessed tone for work cards, hover rows and quiet panels.
+- **Starlight Card** (`starlight-card`): raised surfaces (chips, popovers, ghost-button hover) and the near-white text on the primary button.
+- **Indigo Ink** (`indigo-ink`): headings and primary text. **Indigo Ink Soft** (`indigo-ink-soft`): nav links, chip text, card body. **Indigo Muted** (`indigo-muted`): sub-headings, meta and footer. **Indigo Faint** (`indigo-faint`): de-emphasised marks only, never body text.
+- **Indigo Line** (`indigo-line`): borders on buttons, chips and the scrolled header. **Indigo Line Soft** (`indigo-line-soft`): rules between sections and card borders.
+- **Night Sky Indigo** (`night-sky-indigo`, `night-sky-indigo-2`, `night-sky-card`) with **Starlight Ink** (`starlight-ink`): the same roles in Cosmos dark.
+- **Paper Cream** (`paper-cream`), **Paper Ink** (`paper-ink`) and **Paper Terracotta** (`paper-terracotta`): the Paper style's base pair and default accent, warm counterparts to the Cosmos roles.
 
-- Sticky, `z-index: 40`, transparent until scrolled, then `background: color-mix(in oklab, var(--paper) 85%, transparent)` + `backdrop-filter: blur(10px) saturate(1.2)` + bottom border `var(--line)`.
-- Left: **wordmark** = serif name (20px / 500) + accent dot.
-- Center: **nav** links (14px, `--ink-soft`), animated left→right underline on hover in `--accent`. Hidden < 760px.
-- Right: **tools** = pill buttons (36px tall, `border-radius: 999px`, `1px solid var(--line)`): EN/ES toggle (active locale in `--accent-ink` 600, other in `--faint`) and a theme toggle.
+### Named Rules
 
-### Hero
+**The Ink-for-Text Rule.** Small accent text always uses the ink variant (`--accent-ink`), never the raw accent; the raw accent is for fills, rules and marks. The ink variant is what keeps AA contrast on paper and card.
 
-- `.hero-grid`: two columns `minmax(0,1.15fr) minmax(0,0.85fr)`, `gap: clamp(32px,5vw,72px)`, `align-items: center`. Stacks to one column < 860px, with the **portrait moved above** the text (`order: -1`, `max-width: 320px`).
-- Left column, in order:
-  1. **Availability** pill-ish line: green status dot (`oklch(0.7 0.15 150)` with a soft ring via box-shadow) + text "Open to new roles · 2026".
-  2. **Role eyebrow**: uppercase, `--accent-ink`, 600, letter-spacing 0.04em.
-  3. **Name** (serif display, two lines via `\n` + `white-space: pre-line`).
-  4. **Pitch** (serif, max 24ch, key phrase wrapped in `<em>`).
-  5. **Stats line** (`.hero-stats`): a single thin flex row, wraps. Each stat = serif bold number (`19px`, `--ink`) + sans label (`14px`, `--muted`), separated by a small `3px` dot via `::after`. Current metrics: `9 years engineering · 50+ teams on the design system · Millions of passengers reached · 10+ countries`.
-  6. **Meta**: location · remote (14px `--muted`, dot separator).
-  7. **CTAs**: primary "Get in touch" (filled accent) + ghost "Download CV".
-- Right column: **portrait** — a 4:5 rounded image (`border-radius: 7px`, `1px solid var(--line)`). In the reference build this is a drag-to-fill slot; for a static build just use an `<img>` with `object-fit: cover`. Asset: `images/portrait-crop.png` (608×760).
+**The Illustration-Only Companions Rule.** `--accent-2` and `--accent-3` exist for dioramas and figures. UI chrome uses the accent alone.
 
-### Buttons (`.btn`)
+**The Every-Combination Rule.** A new colour role must hold AA contrast in all four style × mode combinations and with every accent before it ships.
 
-- `height: 50px`, `padding: 0 24px`, `border-radius: 999px`, `font 15px/500`, `1px solid var(--line)`, optional leading icon (17px).
-- Hover: `translateY(-1px)`.
-- `.btn-primary`: accent fill, near-white text, hover glow `box-shadow: 0 10px 26px -10px color-mix(in oklab, var(--accent) 70%, transparent)`.
-- `.btn-ghost`: hover → border `--ink-soft`, bg `--card`.
+## Typography
 
-### Section head
+**Display Font:** Newsreader (with Georgia, 'Times New Roman', serif)
+**Body Font:** Hanken Grotesk (with system-ui, -apple-system, sans-serif)
 
-- Italic serif number in accent (`01`…`05`) → serif title → `--muted` subtitle (`max-width: 56ch`).
+**Character:** A literary, optical-size serif for anything that names or claims something, paired with a clean, slightly warm grotesque for reading and UI. The serif's italic is the editorial marker, used for small notes rather than emphasis in prose.
 
-### Experience timeline
+Both families are self-hosted, subset and instanced (Newsreader 300–500 with italics, Hanken Grotesk 400–600).
 
-- Each entry = grid `132px 1fr`, `gap: clamp(20px,4vw,52px)`, separated by `1px solid var(--line-soft)`. Stacks < 680px (aside becomes an inline baseline row).
-- **Aside**: years (serif 19px) · sector (uppercase 12px `--faint`) · location (13px `--muted`).
-- **Main**: company (serif `clamp(24px,3.2vw,32px)`/500) → **highlight pill** (accent-soft bg, `--accent-ink` text, `border-radius: 999px`, with a small star) → one or more **roles**.
-- **Role**: head row = title (17px/600) + period (13px `--muted`, `font-variant-numeric: tabular-nums`, `white-space: nowrap`). Bullets: custom marker = a `7px` accent dash (`::before`), `15.5px`, `--ink-soft`.
-- **Stack chips**: `font 12.5px`, `padding: 4px 11px`, `1px solid var(--line)`, `border-radius: 6px`, `background: var(--card)`.
+### Hierarchy
 
-### Skills
+- **Display** (400, `clamp(48px, 10vw, 104px)`, 0.96, −0.025em): the hero name only.
+- **Headline** (400, `clamp(32px, 5vw, 50px)`, 1.02, −0.02em): section titles, case-study and page titles.
+- **Title** (500, `clamp(24px, 3.2vw, 32px)`, 1.1, −0.015em): company names in the experience timeline. Work-card titles use 400 at `clamp(24px, 3vw, 32px)`; post titles use 500 at 24px (19px on phones).
+- **Lede** (serif 300, `clamp(20px, 2.6vw, 28px)`, 1.42): the hero pitch.
+- **Body** (17px, 1.6): all prose and UI. Section subtitles use 19px in muted ink with a 56ch measure. Nav links are 14px; chips, tool buttons and meta are 13px.
+- **Label** (600, 12px, 0.08em tracking, uppercase): eyebrow tags such as WORK above page titles.
+- **Section number** (serif italic, 16px, accent ink): the `01`, `02` markers above section titles.
 
-- Grid `repeat(auto-fit, minmax(200px, 1fr))` with a hairline look: `gap: 2px` over a `--line-soft` background + `1px` border, `border-radius: 14px`, `overflow: hidden` (cells are `--paper`, 26×24px padding). Each col: serif label (18px) with bottom rule, then a vertical `gap:9px` list of `15px --ink-soft` items.
+### Named Rules
 
-### Education & beyond
+**The Serif-Names-Things Rule.** Serif is for names, titles, figures and claims; sans is for reading and operating. A button, label or nav link is never serif.
 
-- Two columns (`1fr 1fr`, stacks < 720px): left = education card (serif school 24px/500, degree, line of place·years in 13px `--muted`, italic serif notes); right = **details list** (`.facts-list`) — rows of `130px 1fr` (`k` 14px/600 ink, `v` 15px `--ink-soft`), hairline top borders.
+**The Pretty-Wrap Rule.** Prose and subtitles use `text-wrap: pretty`; dates and periods use tabular numerals.
 
-### Writing
+## Layout
 
-- Two-col card grid, same `gap:2px` hairline technique as Skills, `border-radius: 14px`. Each post: meta row (category in `--accent-ink` 600 · date · read-time, dot-separated) → serif title (23px/500) → excerpt (15px `--ink-soft`) → footer pinned to bottom (`margin-top:auto`) with tags + an accent arrow that nudges `translate(3px,-3px)` on hover. Below grid: a "Read all posts" link with accent bottom-border that widens its gap on hover.
+A single centred column (max 1080px) with fluid side padding (`clamp(20px, 5vw, 64px)`). Sections breathe vertically (`clamp(64px, 9vh, 110px)`), and consecutive sections are separated by a 1px soft rule rather than background changes. Section heads sit `clamp(40px, 6vh, 64px)` above their content.
 
-### Contact
+Groups (nav, chips, stats, CTAs, card lists) are laid out with flex or grid and `gap`, never per-item margins. The sticky header is transparent at rest and turns into a blurred, 85% paper bar with a bottom rule once the page scrolls.
 
-- Centered. Big serif title (`clamp(40px,8vw,80px)`), `--muted` subtitle (max 50ch), centered button row (primary email + secondary links).
+Responsive behaviour: below 900px the inline nav gives way to a menu button that opens a popover with the same links. Below 480px the wordmark drops its dot and the header tools tighten into icon-only 36px circles, and below 400px the style toggle moves into the menu. Long content (case studies, posts) narrows its measure rather than widening the column.
 
-### Footer
+## Elevation & Depth
 
-- Top border `--line`. Space-between row: credit text (13px `--muted`) + socials (hover → `--accent-ink`).
+Depth is mostly tonal: paper → paper-2 (recessed) → card (raised), with 1px lines doing the separating. Shadows exist but are scarce: today they are the primary button's accent glow on hover and the mobile menu's soft drop. This is the current tendency, not a ban; a new component may use a shadow when it floats above the page or responds to a state.
 
-### Tweaks panel (optional / dev affordance)
+### Shadow Vocabulary
 
-- Fixed bottom-right card (264px, `border-radius: 16px`, blurred `--card` bg, soft shadow). Only needed if you keep the live palette switcher. Contains a row of color **swatches** (30px dots, active = `2px solid var(--ink)` ring). If you ship a single palette, you can omit this entirely.
+- **Accent glow** (`box-shadow: 0 10px 26px -10px color-mix(in oklab, var(--accent) 70%, transparent)`): primary button hover only.
+- **Floating layer** (`box-shadow: 0 18px 40px -20px color-mix(in oklab, var(--ink) 40%, transparent)`): popovers such as the mobile menu.
+- **Active marker** (`box-shadow: inset 2px 0 0 var(--accent)`): the current link inside the mobile menu. A line, not a lift.
 
----
+### Named Rules
 
-## 6. Content data model
+**The Tone-Before-Shadow Rule.** Reach for a tonal step or a 1px line before a shadow. If a shadow is used, derive its colour from `--ink` or `--accent` with `color-mix`, never a neutral grey or black.
 
-Copy is bilingual. Shape (per locale `en` / `es`):
+## Shapes
 
-```
-hero:    { available, role, name (with \n), pitch, location, remote, cta1, cta2 }
-facts:   [ { n, l } ]            // the hero stats line
-nav:     { work, skills, writing, contact }
-work/skills/education/writing/contact: { num, title, sub, ... }
-eduList: [ { school, degree, place, years, notes } ]
-additional: [ { label, value } ] // Industries / Languages / Work authorization
-skillGroups: [ { label, items[] } ]
-posts:   [ { date, category, readTime, title, excerpt, tags[] } ]
-```
+Two families of corners: fully rounded pills (999px) for anything you press in the chrome (buttons, header tools, highlight pills, skip link), and small, near-square corners (6px) for content (chips, work cards, tooltips, the portrait). Rows inside menus use 8px, and floating panels use 14px. Focus outlines are 2px in accent ink with a 3px offset and a 4px radius.
 
-Experience is a separate array; each company has bilingual `sector`, `highlight`, `location`, and `roles[]` with bilingual `bullets`:
+Borders are 1px throughout. Underlines (1px, accent) mark links and the current nav item; they draw in from the left on hover.
 
-```
-{ id, company, sector{en,es}, years, location{en,es}, highlight{en,es},
-  roles:[ { title{en,es}, period, bullets:{en:[],es:[]} } ], stack:[] }
-```
+## Components
 
-Use the attached CV (`uploads/cv-rodrigo-bustamante-general.pdf`) as the source of truth for facts. Note the framing is **deliberately not aviation-led** — describe scale/platforms/design-systems; aviation is mentioned only as one industry among several.
+### Buttons
 
----
+Precise and quiet: a pill with a fine border, where only the primary action gets a fill.
 
-## 7. Assets
+- **Shape:** full pill (999px), 50px tall, 24px side padding, 16px/500 text, 17px icons with a 9px gap.
+- **Primary:** accent fill, accent border, on-accent text (near-white on light, deep indigo on dark).
+- **Ghost:** transparent with a 1px line border and ink text; on hover the border darkens to ink-soft and the fill becomes card.
+- **Hover / Focus:** a 1px lift (motion permitting); the primary adds the accent glow. Focus is the global accent-ink outline.
 
-- `images/portrait-crop.png` — hero portrait, 4:5 (608×760). Original full-res at `images/portrait.png`.
-- CV PDF linked from the "Download CV" button.
+### Header tools
 
-## 8. Accessibility & polish
+- **Style:** 36px pills with a 1px line border, 13px ink-soft text or a 16px stroke icon (1.7 stroke). On hover the border and text darken to ink.
+- **Tooltips:** on hover-capable devices only, a small ink chip with paper text (12px/500, 6px radius) appears below and right-aligned after 350ms.
+- **Language toggle:** shows `EN / ES` with the current language in accent ink at 600 weight and the other one muted.
 
-- Respect `prefers-reduced-motion` (no reveal transforms, show final state).
-- Maintain contrast: small accent text always uses `--accent-ink`, never `--accent`.
-- Hit targets ≥ 36px (tools) / 50px (buttons).
-- `text-wrap: pretty` on prose; `tabular-nums` on dates/periods.
-- Smooth scroll; never use `scrollIntoView` in a way that hijacks layout.
+### Chips
+
+- **Style:** 13px ink-soft text on card, 1px line border, 6px radius, 4px 11px padding, no wrap.
+- **Highlight pill:** a pill in accent-soft with accent-ink 13px/500 text and a small leading mark, used for one standout achievement per entry.
+- **Motion:** in a revealed stack, chips cascade in 35ms apart.
+
+### Cards / Containers
+
+- **Corner Style:** 6px.
+- **Background:** paper-2, with a 1px line-soft border.
+- **Shadow Strategy:** none; hover swaps the border to the accent and nudges the CTA arrow 4px.
+- **Internal Padding:** 28px on the sides and top, 24px at the bottom.
+
+### Navigation
+
+- **Desktop:** 14px ink-soft links with 26px gaps. Hover darkens to ink and draws a 1px accent underline in from the left. The current section (`aria-current="page"`) keeps ink colour and a full underline.
+- **Mobile:** below 900px a menu button opens a popover (card, 1px line, 14px radius, floating-layer shadow) holding the same links as 16px rows with 8px radius and a paper-2 hover. The current link carries a 2px inset accent bar.
+- **One menu everywhere:** Experience, Work, Skills, Blog, Contact on every page.
+
+### Isometric dioramas (signature)
+
+Flat SVG plates drawn on an isometric grid (`src/components/portfolio/dioramas`), one per case study plus Santiago and Madrid on the home page. They are coloured only through `--accent`, `--accent-2` and `--accent-3` plus neutral tones, so they follow the active style, mode and accent. Small loops (trucks, cranes, planes) run only with `prefers-reduced-motion: no-preference` and pause when off-screen.
+
+## Do's and Don'ts
+
+### Do:
+
+- **Do** author new colours in OKLCH and check them in Cosmos and Paper, light and dark, against paper and card.
+- **Do** use `--accent-ink` for any accent-coloured text and `--accent` for fills, rules and marks.
+- **Do** separate sections with the 1px soft rule and the `clamp(64px, 9vh, 110px)` rhythm instead of alternating backgrounds.
+- **Do** keep actions as pills and content as 6px containers.
+- **Do** gate every transform and animation behind `prefers-reduced-motion: no-preference`, and use the `cubic-bezier(0.2, 0.7, 0.2, 1)` ease for reveals.
+- **Do** show new tokens or components on `/system` when they become part of the system.
+
+### Don't:
+
+- **Don't** use the accent as a large background or section fill; it marks, it doesn't flood.
+- **Don't** use the illustration companions (`--accent-2`, `--accent-3`) in UI chrome.
+- **Don't** set buttons, labels or navigation in the serif.
+- **Don't** add gradients or emoji to the interface.
+- **Don't** hard-code hex or neutral-grey shadows; derive from the tokens with `color-mix`.

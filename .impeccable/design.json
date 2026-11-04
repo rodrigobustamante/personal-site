@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T14:59:28.946Z",
+  "title": "Design System: Rodrigo Bustamante — Personal Site",
+  "extensions": {
+    "colorMeta": {
+      "starlight-paper": {
+        "role": "neutral",
+        "displayName": "Starlight Paper",
+        "canonical": "oklch(0.975 0.01 270)",
+        "tonalRamp": [
+          "oklch(0.15 0.005 270)",
+          "oklch(0.27 0.009 270)",
+          "oklch(0.39 0.01 270)",
+          "oklch(0.51 0.01 270)",
+          "oklch(0.63 0.01 270)",
+          "oklch(0.75 0.008 270)",
+          "oklch(0.86 0.005 270)",
+          "oklch(0.95 0.002 270)"
+        ]
+      },
+      "starlight-paper-2": {
+        "role": "neutral",
+        "displayName": "Starlight Paper 2",
+        "canonical": "oklch(0.945 0.016 272)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 272)",
+          "oklch(0.27 0.014 272)",
+          "oklch(0.39 0.016 272)",
+          "oklch(0.51 0.016 272)",
+          "oklch(0.63 0.016 272)",
+          "oklch(0.75 0.013 272)",
+          "oklch(0.86 0.007 272)",
+          "oklch(0.95 0.003 272)"
+        ]
+      },
+      "starlight-card": {
+        "role": "neutral",
+        "displayName": "Starlight Card",
+        "canonical": "oklch(0.993 0.004 270)",
+        "tonalRamp": [
+          "oklch(0.15 0.002 270)",
+          "oklch(0.27 0.004 270)",
+          "oklch(0.39 0.004 270)",
+          "oklch(0.51 0.004 270)",
+          "oklch(0.63 0.004 270)",
+          "oklch(0.75 0.003 270)",
+          "oklch(0.86 0.002 270)",
+          "oklch(0.95 0.001 270)"
+        ]
+      },
+      "indigo-ink": {
+        "role": "neutral",
+        "displayName": "Indigo Ink",
+        "canonical": "oklch(0.25 0.06 278)",
+        "tonalRamp": [
+          "oklch(0.15 0.03 278)",
+          "oklch(0.27 0.054 278)",
+          "oklch(0.39 0.06 278)",
+          "oklch(0.51 0.06 278)",
+          "oklch(0.63 0.06 278)",
+          "oklch(0.75 0.05 278)",
+          "oklch(0.86 0.028 278)",
+          "oklch(0.95 0.01 278)"
+        ]
+      },
+      "indigo-ink-soft": {
+        "role": "neutral",
+        "displayName": "Indigo Ink Soft",
+        "canonical": "oklch(0.38 0.06 278)",
+        "tonalRamp": [
+          "oklch(0.15 0.03 278)",
+          "oklch(0.27 0.054 278)",
+          "oklch(0.39 0.06 278)",
+          "oklch(0.51 0.06 278)",
+          "oklch(0.63 0.06 278)",
+          "oklch(0.75 0.05 278)",
+          "oklch(0.86 0.028 278)",
+          "oklch(0.95 0.01 278)"
+        ]
+      },
+      "indigo-muted": {
+        "role": "neutral",
+        "displayName": "Indigo Muted",
+        "canonical": "oklch(0.47 0.045 276)",
+        "tonalRamp": [
+          "oklch(0.15 0.022 276)",
+          "oklch(0.27 0.041 276)",
+          "oklch(0.39 0.045 276)",
+          "oklch(0.51 0.045 276)",
+          "oklch(0.63 0.045 276)",
+          "oklch(0.75 0.037 276)",
+          "oklch(0.86 0.021 276)",
+          "oklch(0.95 0.008 276)"
+        ]
+      },
+      "indigo-faint": {
+        "role": "neutral",
+        "displayName": "Indigo Faint",
+        "canonical": "oklch(0.6 0.035 274)",
+        "tonalRamp": [
+          "oklch(0.15 0.018 274)",
+          "oklch(0.27 0.032 274)",
+          "oklch(0.39 0.035 274)",
+          "oklch(0.51 0.035 274)",
+          "oklch(0.63 0.035 274)",
+          "oklch(0.75 0.029 274)",
+          "oklch(0.86 0.016 274)",
+          "oklch(0.95 0.006 274)"
+        ]
+      },
+      "indigo-line": {
+        "role": "neutral",
+        "displayName": "Indigo Line",
+        "canonical": "oklch(0.88 0.022 272)",
+        "tonalRamp": [
+          "oklch(0.15 0.011 272)",
+          "oklch(0.27 0.02 272)",
+          "oklch(0.39 0.022 272)",
+          "oklch(0.51 0.022 272)",
+          "oklch(0.63 0.022 272)",
+          "oklch(0.75 0.018 272)",
+          "oklch(0.86 0.01 272)",
+          "oklch(0.95 0.004 272)"
+        ]
+      },
+      "indigo-line-soft": {
+        "role": "neutral",
+        "displayName": "Indigo Line Soft",
+        "canonical": "oklch(0.925 0.016 272)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 272)",
+          "oklch(0.27 0.014 272)",
+          "oklch(0.39 0.016 272)",
+          "oklch(0.51 0.016 272)",
+          "oklch(0.63 0.016 272)",
+          "oklch(0.75 0.013 272)",
+          "oklch(0.86 0.007 272)",
+          "oklch(0.95 0.003 272)"
+        ]
+      },
+      "nebula-magenta": {
+        "role": "primary",
+        "displayName": "Nebula Magenta",
+        "canonical": "oklch(0.55 0.21 355)",
+        "tonalRamp": [
+          "oklch(0.15 0.105 355)",
+          "oklch(0.27 0.189 355)",
+          "oklch(0.39 0.21 355)",
+          "oklch(0.51 0.21 355)",
+          "oklch(0.63 0.21 355)",
+          "oklch(0.75 0.175 355)",
+          "oklch(0.86 0.098 355)",
+          "oklch(0.95 0.035 355)"
+        ]
+      },
+      "nebula-magenta-ink": {
+        "role": "primary",
+        "displayName": "Nebula Magenta Ink",
+        "canonical": "oklch(0.5 0.2 355)",
+        "tonalRamp": [
+          "oklch(0.15 0.1 355)",
+          "oklch(0.27 0.18 355)",
+          "oklch(0.39 0.2 355)",
+          "oklch(0.51 0.2 355)",
+          "oklch(0.63 0.2 355)",
+          "oklch(0.75 0.167 355)",
+          "oklch(0.86 0.093 355)",
+          "oklch(0.95 0.033 355)"
+        ]
+      },
+      "sun-amber": {
+        "role": "secondary",
+        "displayName": "Sun Amber",
+        "canonical": "oklch(0.64 0.15 64)",
+        "tonalRamp": [
+          "oklch(0.15 0.075 64)",
+          "oklch(0.27 0.135 64)",
+          "oklch(0.39 0.15 64)",
+          "oklch(0.51 0.15 64)",
+          "oklch(0.63 0.15 64)",
+          "oklch(0.75 0.125 64)",
+          "oklch(0.86 0.07 64)",
+          "oklch(0.95 0.025 64)"
+        ]
+      },
+      "aurora-teal": {
+        "role": "secondary",
+        "displayName": "Aurora Teal",
+        "canonical": "oklch(0.6 0.1 195)",
+        "tonalRamp": [
+          "oklch(0.15 0.05 195)",
+          "oklch(0.27 0.09 195)",
+          "oklch(0.39 0.1 195)",
+          "oklch(0.51 0.1 195)",
+          "oklch(0.63 0.1 195)",
+          "oklch(0.75 0.083 195)",
+          "oklch(0.86 0.047 195)",
+          "oklch(0.95 0.017 195)"
+        ]
+      },
+      "night-sky-indigo": {
+        "role": "neutral",
+        "displayName": "Night Sky Indigo",
+        "canonical": "oklch(0.2 0.05 278)",
+        "tonalRamp": [
+          "oklch(0.15 0.025 278)",
+          "oklch(0.27 0.045 278)",
+          "oklch(0.39 0.05 278)",
+          "oklch(0.51 0.05 278)",
+          "oklch(0.63 0.05 278)",
+          "oklch(0.75 0.042 278)",
+          "oklch(0.86 0.023 278)",
+          "oklch(0.95 0.008 278)"
+        ]
+      },
+      "night-sky-indigo-2": {
+        "role": "neutral",
+        "displayName": "Night Sky Indigo 2",
+        "canonical": "oklch(0.235 0.058 280)",
+        "tonalRamp": [
+          "oklch(0.15 0.029 280)",
+          "oklch(0.27 0.052 280)",
+          "oklch(0.39 0.058 280)",
+          "oklch(0.51 0.058 280)",
+          "oklch(0.63 0.058 280)",
+          "oklch(0.75 0.048 280)",
+          "oklch(0.86 0.027 280)",
+          "oklch(0.95 0.01 280)"
+        ]
+      },
+      "night-sky-card": {
+        "role": "neutral",
+        "displayName": "Night Sky Card",
+        "canonical": "oklch(0.255 0.062 281)",
+        "tonalRamp": [
+          "oklch(0.15 0.031 281)",
+          "oklch(0.27 0.056 281)",
+          "oklch(0.39 0.062 281)",
+          "oklch(0.51 0.062 281)",
+          "oklch(0.63 0.062 281)",
+          "oklch(0.75 0.052 281)",
+          "oklch(0.86 0.029 281)",
+          "oklch(0.95 0.01 281)"
+        ]
+      },
+      "starlight-ink": {
+        "role": "neutral",
+        "displayName": "Starlight Ink",
+        "canonical": "oklch(0.96 0.014 260)",
+        "tonalRamp": [
+          "oklch(0.15 0.007 260)",
+          "oklch(0.27 0.013 260)",
+          "oklch(0.39 0.014 260)",
+          "oklch(0.51 0.014 260)",
+          "oklch(0.63 0.014 260)",
+          "oklch(0.75 0.012 260)",
+          "oklch(0.86 0.007 260)",
+          "oklch(0.95 0.002 260)"
+        ]
+      },
+      "nebula-magenta-night": {
+        "role": "primary",
+        "displayName": "Nebula Magenta, Night",
+        "canonical": "oklch(0.72 0.18 355)",
+        "tonalRamp": [
+          "oklch(0.15 0.09 355)",
+          "oklch(0.27 0.162 355)",
+          "oklch(0.39 0.18 355)",
+          "oklch(0.51 0.18 355)",
+          "oklch(0.63 0.18 355)",
+          "oklch(0.75 0.15 355)",
+          "oklch(0.86 0.084 355)",
+          "oklch(0.95 0.03 355)"
+        ]
+      },
+      "nebula-magenta-ink-night": {
+        "role": "primary",
+        "displayName": "Nebula Magenta Ink, Night",
+        "canonical": "oklch(0.8 0.13 355)",
+        "tonalRamp": [
+          "oklch(0.15 0.065 355)",
+          "oklch(0.27 0.117 355)",
+          "oklch(0.39 0.13 355)",
+          "oklch(0.51 0.13 355)",
+          "oklch(0.63 0.13 355)",
+          "oklch(0.75 0.108 355)",
+          "oklch(0.86 0.061 355)",
+          "oklch(0.95 0.022 355)"
+        ]
+      },
+      "paper-cream": {
+        "role": "neutral",
+        "displayName": "Paper Cream",
+        "canonical": "oklch(0.972 0.013 79)",
+        "tonalRamp": [
+          "oklch(0.15 0.006 79)",
+          "oklch(0.27 0.012 79)",
+          "oklch(0.39 0.013 79)",
+          "oklch(0.51 0.013 79)",
+          "oklch(0.63 0.013 79)",
+          "oklch(0.75 0.011 79)",
+          "oklch(0.86 0.006 79)",
+          "oklch(0.95 0.002 79)"
+        ]
+      },
+      "paper-ink": {
+        "role": "neutral",
+        "displayName": "Paper Ink",
+        "canonical": "oklch(0.27 0.018 55)",
+        "tonalRamp": [
+          "oklch(0.15 0.009 55)",
+          "oklch(0.27 0.016 55)",
+          "oklch(0.39 0.018 55)",
+          "oklch(0.51 0.018 55)",
+          "oklch(0.63 0.018 55)",
+          "oklch(0.75 0.015 55)",
+          "oklch(0.86 0.008 55)",
+          "oklch(0.95 0.003 55)"
+        ]
+      },
+      "paper-terracotta": {
+        "role": "primary",
+        "displayName": "Paper Terracotta",
+        "canonical": "oklch(0.565 0.125 42)",
+        "tonalRamp": [
+          "oklch(0.15 0.063 42)",
+          "oklch(0.27 0.113 42)",
+          "oklch(0.39 0.125 42)",
+          "oklch(0.51 0.125 42)",
+          "oklch(0.63 0.125 42)",
+          "oklch(0.75 0.104 42)",
+          "oklch(0.86 0.058 42)",
+          "oklch(0.95 0.021 42)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The hero name only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section, page and case-study titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Company names, work-card and post titles."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The hero pitch, light serif."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose and UI text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase eyebrow tags above titles."
+      }
+    },
+    "shadows": [
+      {
+        "name": "accent-glow",
+        "value": "0 10px 26px -10px color-mix(in oklab, var(--accent) 70%, transparent)",
+        "purpose": "Primary button hover only."
+      },
+      {
+        "name": "floating-layer",
+        "value": "0 18px 40px -20px color-mix(in oklab, var(--ink) 40%, transparent)",
+        "purpose": "Popovers such as the mobile menu."
+      },
+      {
+        "name": "active-marker",
+        "value": "inset 2px 0 0 var(--accent)",
+        "purpose": "Current link inside the mobile menu."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-reveal",
+        "value": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "purpose": "Scroll reveals, hero intro and chip cascades."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 0.7s ease, transform 0.7s (16px rise)",
+        "purpose": "Sections entering the viewport."
+      },
+      {
+        "name": "chip-stagger",
+        "value": "250ms + 35ms per chip",
+        "purpose": "Stack chips cascading in after their card is revealed."
+      },
+      {
+        "name": "state",
+        "value": "0.2s ease",
+        "purpose": "Colour, border and 1px lift on hover."
+      },
+      {
+        "name": "theme",
+        "value": "background 0.4s ease, color 0.4s ease",
+        "purpose": "Body crossfade when switching theme or style."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "menu",
+        "value": "900px"
+      },
+      {
+        "name": "phone",
+        "value": "480px"
+      },
+      {
+        "name": "narrow",
+        "value": "400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action on a screen: Get in touch, View case study.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Get in touch <svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 24px; border-radius: 999px; font-family: var(--sans); font-size: 16px; font-weight: 500; border: 1px solid var(--line); color: var(--ink); text-decoration: none; transition: all 0.2s ease; } .ds-btn-primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); } .ds-btn:hover { transform: translateY(-1px); } .ds-btn-primary:hover { box-shadow: 0 10px 26px -10px color-mix(in oklab, var(--accent) 70%, transparent); } .ds-btn:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action beside the primary: Download CV.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Download CV</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 9px; height: 50px; padding: 0 24px; border-radius: 999px; font-family: var(--sans); font-size: 16px; font-weight: 500; border: 1px solid var(--line); color: var(--ink); text-decoration: none; transition: all 0.2s ease; } .ds-btn-ghost:hover { border-color: var(--ink-soft); background: var(--card); transform: translateY(-1px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; }"
+    },
+    {
+      "name": "Header Tool",
+      "kind": "button",
+      "refersTo": "tool-button",
+      "description": "Language, style and theme toggles in the header.",
+      "html": "<button class=\"ds-tool\" type=\"button\"><span class=\"ds-on\">EN</span><span class=\"ds-slash\">/</span><span class=\"ds-off\">ES</span></button>",
+      "css": ".ds-tool { display: inline-flex; align-items: center; justify-content: center; gap: 5px; height: 36px; min-width: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: none; font-family: var(--sans); font-size: 13px; color: var(--ink-soft); cursor: pointer; transition: all 0.2s; } .ds-tool:hover { border-color: var(--ink-soft); color: var(--ink); } .ds-tool:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; } .ds-on { color: var(--accent-ink); font-weight: 600; } .ds-off { color: var(--muted); } .ds-slash { color: var(--line); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The one header menu; the current section carries aria-current.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Experience</a><a href=\"#\" aria-current=\"page\">Work</a><a href=\"#\">Skills</a><a href=\"#\">Blog</a><a href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 26px; font-family: var(--sans); } .ds-nav a { position: relative; padding: 4px 0; font-size: 14px; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; } .ds-nav a::after { content: \"\"; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--accent); transition: right 0.25s ease; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--ink); } .ds-nav a:hover::after, .ds-nav a[aria-current=\"page\"]::after { right: 0; } .ds-nav a:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Stack and tag labels.",
+      "html": "<span class=\"ds-chip\">TypeScript</span>",
+      "css": ".ds-chip { display: inline-block; font-family: var(--sans); font-size: 13px; color: var(--ink-soft); white-space: nowrap; padding: 4px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }"
+    },
+    {
+      "name": "Highlight Pill",
+      "kind": "chip",
+      "refersTo": "highlight-pill",
+      "description": "One standout achievement per experience entry.",
+      "html": "<span class=\"ds-highlight\"><span aria-hidden=\"true\">★</span> Adopted by 50+ teams</span>",
+      "css": ".ds-highlight { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); font-family: var(--sans); font-size: 13px; font-weight: 500; }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "refersTo": "work-card",
+      "description": "Case-study entry on /work.",
+      "html": "<a class=\"ds-work-card\" href=\"#\"><span class=\"ds-eyebrow\">Design system</span><h3>Hangar Design System</h3><p>One component system for an airline, adopted across 50+ teams.</p><span class=\"ds-cta\">Read the case study <span class=\"ds-arrow\">→</span></span></a>",
+      "css": ".ds-work-card { display: block; padding: 28px 28px 24px; background: var(--paper-2); border: 1px solid var(--line-soft); border-radius: 6px; color: var(--ink); text-decoration: none; font-family: var(--sans); transition: border-color 0.2s ease; } .ds-work-card:hover { border-color: var(--accent); } .ds-work-card:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 3px; } .ds-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); } .ds-work-card h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; margin: 10px 0 8px; } .ds-work-card p { color: var(--ink-soft); margin: 0; } .ds-cta { display: inline-block; margin-top: 18px; color: var(--accent-ink); font-weight: 500; } .ds-arrow { display: inline-block; transition: transform 0.2s ease; } .ds-work-card:hover .ds-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Italic serif number, serif headline and muted subtitle that open every home section.",
+      "html": "<header class=\"ds-section-head\"><span class=\"ds-num\">01</span><h2>Experience</h2><p>Platforms and design systems, from airlines to copper mining.</p></header>",
+      "css": ".ds-num { display: inline-block; margin-bottom: 10px; font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--accent-ink); } .ds-section-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 5vw, 50px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--ink); } .ds-section-head p { font-family: var(--sans); font-size: 19px; color: var(--muted); max-width: 56ch; margin: 0; text-wrap: pretty; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Annotated Atlas",
+    "overview": "The site reads like an atlas of systems Rodrigo has built: each plate is an isometric diorama, each caption a serif title, and each figure (years, teams, passengers) a piece of evidence set in the margin. Type does the editorial work, the dioramas do the explaining, and the chrome stays out of the way. The default **Cosmos** style sets this on a cool indigo field with one saturated accent and two illustration-only companions, after the flat, saturated look of Kurzgesagt illustrations. **Paper** is the alternative style: the site's original warm cream with earthy accents.\n\nDensity is low and the rhythm unhurried: one 1080px column, generous section spacing, thin rules between sections. Components are precise and quiet, with fine 1px borders and small radii. Fills and shadows are reserved for the one action that matters on a screen. The accent earns its place: it marks the primary action, the current location, and small editorial details (section numbers, highlight pills, link underlines), never large surfaces.\n\nThe system is fully themed: two styles (Cosmos, Paper), each with light and dark modes and a runtime-switchable accent. Every combination keeps WCAG AA contrast, and the `/system` page renders the live tokens and components.",
+    "keyCharacteristics": [
+      "Serif display (Newsreader) over a grotesque body (Hanken Grotesk); italic serif for small editorial marks.",
+      "Cool indigo neutrals with a single saturated accent; amber and teal companions only inside illustrations.",
+      "Flat surfaces separated by tone and 1px lines; shadows are rare and tied to state or floating layers.",
+      "Pills for actions and tools, small 6px corners for content containers and chips.",
+      "Motion is short and directional (reveal on scroll, arrows nudging the way they point), and fully disabled under `prefers-reduced-motion`."
+    ],
+    "rules": [
+      {
+        "name": "The Ink-for-Text Rule",
+        "body": "Small accent text always uses the ink variant (`--accent-ink`), never the raw accent; the raw accent is for fills, rules and marks. The ink variant is what keeps AA contrast on paper and card.",
+        "section": "colors"
+      },
+      {
+        "name": "The Illustration-Only Companions Rule",
+        "body": "`--accent-2` and `--accent-3` exist for dioramas and figures. UI chrome uses the accent alone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Every-Combination Rule",
+        "body": "A new colour role must hold AA contrast in all four style × mode combinations and with every accent before it ships.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif-Names-Things Rule",
+        "body": "Serif is for names, titles, figures and claims; sans is for reading and operating. A button, label or nav link is never serif.",
+        "section": "typography"
+      },
+      {
+        "name": "The Pretty-Wrap Rule",
+        "body": "Prose and subtitles use `text-wrap: pretty`; dates and periods use tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tone-Before-Shadow Rule",
+        "body": "Reach for a tonal step or a 1px line before a shadow. If a shadow is used, derive its colour from `--ink` or `--accent` with `color-mix`, never a neutral grey or black.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do author new colours in OKLCH and check them in Cosmos and Paper, light and dark, against paper and card.",
+      "Do use `--accent-ink` for any accent-coloured text and `--accent` for fills, rules and marks.",
+      "Do separate sections with the 1px soft rule and the `clamp(64px, 9vh, 110px)` rhythm instead of alternating backgrounds.",
+      "Do keep actions as pills and content as 6px containers.",
+      "Do gate every transform and animation behind `prefers-reduced-motion: no-preference`, and use the `cubic-bezier(0.2, 0.7, 0.2, 1)` ease for reveals.",
+      "Do show new tokens or components on `/system` when they become part of the system."
+    ],
+    "donts": [
+      "Don't use the accent as a large background or section fill; it marks, it doesn't flood.",
+      "Don't use the illustration companions (`--accent-2`, `--accent-3`) in UI chrome.",
+      "Don't set buttons, labels or navigation in the serif.",
+      "Don't add gradients or emoji to the interface.",
+      "Don't hard-code hex or neutral-grey shadows; derive from the tokens with `color-mix`."
+    ]
+  }
+}
