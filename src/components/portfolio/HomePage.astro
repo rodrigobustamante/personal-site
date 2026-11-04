@@ -21,7 +21,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
 ---
 
 <PortfolioLayout
-  title="Rodrigo Bustamante — Senior Software Engineer · Design Engineer & Senior FrontEnd Engineer"
+  title={t('meta.home.title')}
   description={t('meta.home.description')}
   lang={lang}
   ogImage={`/og/home/${lang}.png`}
@@ -53,7 +53,7 @@ const posts = (await fetchPosts()).filter((post) => getPostLang(post.slug) === l
           </picture>
         </div>
         <div class="hero-left">
-          <div class="hero-role">Design Engineer · Senior Frontend Engineer</div>
+          <div class="hero-role">{t('hero.role')}</div>
           <h1 class="hero-name">
             Rodrigo
             <br />

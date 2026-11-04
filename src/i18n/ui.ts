@@ -38,18 +38,20 @@ export const ui = {
     'work.meta.period': 'Period',
     'work.meta.scope': 'Scope',
     'work.meta.stack': 'Stack',
-    'work.read': 'Read more',
+    'work.read': 'Read the case study',
 
     // <meta name="description"> of the home page
+    'meta.home.title': 'Rodrigo Bustamante — Design Systems & Frontend Architecture',
     'meta.home.description':
-      'Rodrigo Bustamante — Senior Software Engineer, Design Engineer & Senior FrontEnd Engineer. 9 years building scalable frontend systems and design systems for global brands.',
-    'hero.remote': 'Remote-friendly',
+      'Rodrigo Bustamante builds design systems and frontend platforms: 9 years of engineering, including a design system adopted by 50+ teams at LATAM Airlines.',
+    'hero.role': 'Design Systems · Frontend Architecture',
+    'hero.remote': 'Open to remote work',
     'hero.cta.contact': 'Get in touch',
     'hero.cta.cv': 'Download CV',
 
     // experience section
     'exp.title': 'Experience',
-    'exp.sub': 'A decade of building for scale — from payment rails to global platforms used by millions.',
+    'exp.sub': 'Nine years of building for scale, from payment gateways to global platforms used by millions.',
     'exp.present': 'Present',
     'exp.before.title': 'Before 2020',
     'exp.before.early-orgs': 'Ormasoft, Análisis Ltda., Duoc UC',
@@ -68,16 +70,16 @@ export const ui = {
 
     'exp.hangar.sector': 'Design Systems · Architecture',
     'exp.hangar.loc': 'Madrid & Santiago · Remote',
-    'exp.hangar.highlight': 'Boilerplate code shipped to 50+ teams across the company',
+    'exp.hangar.highlight': 'Design system and boilerplate used by 50+ teams across the company',
     'exp.hangar.bullets': [
       'Led design and development of cross-functional UI solutions for LATAM Airlines, creating boilerplate code for 50+ teams across different areas of the company, focusing on performance, accessibility, and best practices.',
       'Developed and maintained components for React and React Native projects, providing support across all business areas.',
       'Designed and built CI/CD pipelines, application deployment workflows, and created MCPs and Skills for use by teams and agents.',
       'Automated processes and built data collection and metrics tools to support decision-making.',
     ],
-    'exp.vantaz.cs': 'Read about the project',
-    'exp.hangar.cs': 'Read case study',
-    'exp.dme.cs': 'Read case study',
+    'exp.vantaz.cs': 'Read the case study',
+    'exp.hangar.cs': 'Read the case study',
+    'exp.dme.cs': 'Read the case study',
 
     'exp.dme-latam.sector': 'Digital Marketing · Platforms',
     'exp.dme-latam.loc': 'Madrid & Santiago · Remote',
@@ -99,7 +101,7 @@ export const ui = {
       'Worked in 2-week Scrum sprints managed via Jira.',
     ],
 
-    'exp.simple-sme.highlight': 'Subject Matter Expert during COVID-19 crisis',
+    'exp.simple-sme.highlight': 'Subject Matter Expert during the COVID-19 crisis',
 
     'exp.gateway.highlight': 'Payment gateway for Chile and Peru',
 
@@ -111,7 +113,7 @@ export const ui = {
 
     // journey
     'journey.title': 'From Santiago to Madrid',
-    'journey.sub': 'Ten years building software in Santiago, then a move across the Atlantic in September 2025.',
+    'journey.sub': 'Nine years building software in Santiago, then a move across the Atlantic in September 2025.',
     'journey.santiago': 'Santiago, Chile',
     'journey.madrid': 'Madrid, Spain',
 
@@ -152,7 +154,7 @@ export const ui = {
     'projects.a11y.status': 'In development',
     'projects.repo': 'Repo',
     'projects.demo': 'Demo',
-    'projects.more': 'Read more',
+    'projects.more': 'Case study',
 
     // writing
     'writing.title': 'Writing',
@@ -161,7 +163,7 @@ export const ui = {
 
     // contact
     'contact.title': "Let's talk.",
-    'contact.sub': 'Open to Senior Frontend Engineer roles. The fastest way to reach me is email.',
+    'contact.sub': 'Open to design system and frontend architecture roles. Email is the fastest way to reach me.',
 
     // blog
     'blog.description': 'Articles on web performance, frontend engineering, and software craftsmanship.',
@@ -217,19 +219,21 @@ export const ui = {
     'work.meta.period': 'Período',
     'work.meta.scope': 'Alcance',
     'work.meta.stack': 'Stack',
-    'work.read': 'Leer más',
+    'work.read': 'Leer el caso de estudio',
 
     // <meta name="description"> de la home
+    'meta.home.title': 'Rodrigo Bustamante — Design systems y arquitectura frontend',
     'meta.home.description':
-      'Rodrigo Bustamante — Senior Software Engineer, Design Engineer y Senior FrontEnd Engineer. 9 años construyendo sistemas frontend y design systems escalables para marcas globales.',
-    'hero.remote': 'Disponible en remoto',
+      'Rodrigo Bustamante construye design systems y plataformas frontend: 9 años de ingeniería, entre ellos un design system adoptado por más de 50 equipos en LATAM Airlines.',
+    'hero.role': 'Design systems · Arquitectura frontend',
+    'hero.remote': 'Abierto a trabajo en remoto',
     'hero.cta.contact': 'Hablemos',
     'hero.cta.cv': 'Descargar CV',
 
     // experience section
     'exp.title': 'Experiencia',
     'exp.sub':
-      'Una década construyendo a escala — desde pasarelas de pago hasta plataformas globales usadas por millones.',
+      'Nueve años construyendo a escala, desde pasarelas de pago hasta plataformas globales usadas por millones.',
     'exp.present': 'Presente',
     'exp.before.title': 'Antes de 2020',
     'exp.before.early-orgs': 'Ormasoft, Análisis Ltda., Duoc UC',
@@ -248,18 +252,18 @@ export const ui = {
 
     'exp.hangar.sector': 'Design Systems · Arquitectura',
     'exp.hangar.loc': 'Madrid y Santiago · Remoto',
-    'exp.hangar.highlight': 'Boilerplate para 50+ equipos en toda la compañía',
+    'exp.hangar.highlight': 'Design system y boilerplate usados por más de 50 equipos en toda la compañía',
     'exp.hangar.bullets': [
       'Lideré el diseño y desarrollo de soluciones UI transversales para LATAM Airlines, creando código boilerplate para más de 50 equipos en distintas áreas con foco en performance, accesibilidad y buenas prácticas.',
       'Desarrollé y mantuve componentes para proyectos en React y React Native, brindando soporte a equipos en todo el negocio.',
       'Diseñé y construí los distintos pipelines de CI/CD, el despliegue de aplicaciones y la creación de MCPs y Skills para uso de equipos y agentes.',
       'Automaticé procesos y construí herramientas de recopilación de datos y métricas para la toma de decisiones.',
     ],
-    'exp.vantaz.cs': 'Ver el proyecto',
-    'exp.hangar.cs': 'Ver caso de estudio',
-    'exp.dme.cs': 'Ver caso de estudio',
+    'exp.vantaz.cs': 'Leer el caso de estudio',
+    'exp.hangar.cs': 'Leer el caso de estudio',
+    'exp.dme.cs': 'Leer el caso de estudio',
 
-    'exp.dme-latam.sector': 'Marketing Digital · Plataformas',
+    'exp.dme-latam.sector': 'Marketing digital · Plataformas',
     'exp.dme-latam.loc': 'Madrid y Santiago · Remoto',
     'exp.dme-latam.highlight': 'Home de la aerolínea más grande de Latinoamérica',
     'exp.dme-latam.bullets': [
@@ -269,7 +273,7 @@ export const ui = {
       'Metodología: Scrum con sprints de 2 semanas gestionados en Jira.',
     ],
 
-    'exp.dme-globant.sector': 'Marketing Digital · Consultoría',
+    'exp.dme-globant.sector': 'Marketing digital · Consultoría',
     'exp.dme-globant.loc': 'Santiago, Chile · Remoto',
     'exp.dme-globant.highlight': 'Microfrontends y BFFs para operaciones globales',
     'exp.dme-globant.bullets': [
@@ -279,7 +283,7 @@ export const ui = {
       'Metodología: Scrum con sprints de 2 semanas gestionados en Jira.',
     ],
 
-    'exp.simple-sme.highlight': 'SME durante la crisis COVID-19',
+    'exp.simple-sme.highlight': 'Subject Matter Expert durante la crisis del COVID-19',
 
     'exp.gateway.highlight': 'Pasarela de pagos para Chile y Perú',
 
@@ -292,22 +296,22 @@ export const ui = {
     // journey
     'journey.title': 'De Santiago a Madrid',
     'journey.sub':
-      'Diez años construyendo software en Santiago y, en septiembre de 2025, el salto al otro lado del Atlántico.',
+      'Nueve años construyendo software en Santiago y, en septiembre de 2025, el salto al otro lado del Atlántico.',
     'journey.santiago': 'Santiago, Chile',
     'journey.madrid': 'Madrid, España',
 
     // skills
     'skills.sub': 'Las herramientas y disciplinas a las que recurro.',
     'skills.architecture': 'Arquitectura',
-    'skills.cloud': 'Cloud e Infraestructura',
-    'skills.viz': 'Visualización y Tools',
+    'skills.cloud': 'Cloud e infraestructura',
+    'skills.viz': 'Visualización y herramientas',
 
     // education
     'edu.title': 'Formación y más',
     'edu.sub': 'Las bases y los detalles que preguntan los reclutadores.',
     'edu.section': 'Formación',
     'edu.degree': 'Ingeniería en Informática',
-    'edu.notes': 'Graduado con Distinción. Ganador del Concurso Anual CITT 2017.',
+    'edu.notes': 'Graduado con distinción. Ganador del Concurso Anual CITT 2017.',
     'edu.details': 'Detalles',
     'edu.industries.k': 'Industrias',
     'edu.industries.v': 'Retail, pagos, salud, innovación corporativa y aviación.',
@@ -333,16 +337,17 @@ export const ui = {
     'projects.a11y.status': 'En desarrollo',
     'projects.repo': 'Repo',
     'projects.demo': 'Demo',
-    'projects.more': 'Leer más',
+    'projects.more': 'Caso de estudio',
 
     // writing
     'writing.title': 'Blog',
     'writing.sub': 'Apuntes sobre performance web, accesibilidad y construir a escala.',
-    'writing.more': 'Ver todos los posts',
+    'writing.more': 'Ver todos los artículos',
 
     // contact
     'contact.title': 'Hablemos.',
-    'contact.sub': 'Abierto a roles de Senior Frontend Engineer. La forma más rápida de contactarme es por email.',
+    'contact.sub':
+      'Abierto a roles de design systems y arquitectura frontend. La forma más rápida de contactarme es por email.',
 
     // blog
     'blog.description': 'Artículos sobre rendimiento web, ingeniería frontend y oficio de software.',
@@ -353,7 +358,7 @@ export const ui = {
     // footer
     'footer.credit': 'Diseñado y construido por Rodrigo Bustamante · Madrid',
     'footer.more': 'Más',
-    'footer.system': 'Sistema de diseño',
+    'footer.system': 'Design system',
     'footer.uses': 'Cómo está hecho',
 
     // case study — Hangar Design System
