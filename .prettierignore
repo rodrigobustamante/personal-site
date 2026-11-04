@@ -6,3 +6,5 @@ pnpm-lock.yaml
 .claude/
 .lighthouseci/
 public/fonts/*.woff2
+# Generated weekly by .github/workflows/contributions.yml and committed unformatted.
+src/data/contributions.json
