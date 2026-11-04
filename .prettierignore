@@ -8,3 +8,5 @@ pnpm-lock.yaml
 public/fonts/*.woff2
 # Generated weekly by .github/workflows/contributions.yml and committed unformatted.
 src/data/contributions.json
+# Impeccable artifacts: the design sidecar and local critique snapshots.
+.impeccable/
