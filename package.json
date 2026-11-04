@@ -14,6 +14,7 @@
     "format": "prettier -w .",
     "lint:eslint": "eslint .",
     "lighthouse": "lhci autorun",
+    "prepare": "git config core.hooksPath .githooks || true",
     "test": "node --test 'src/**/*.test.ts'"
   },
   "dependencies": {

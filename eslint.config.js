@@ -4,7 +4,21 @@ import tseslint from 'typescript-eslint';
 import astro from 'eslint-plugin-astro';
 
 export default tseslint.config(
-  { ignores: ['dist/', '.astro/', '.wrangler/', '.lighthouseci/', 'node_modules/', '**/types.generated.d.ts'] },
+  {
+    ignores: [
+      'dist/',
+      '.astro/',
+      '.wrangler/',
+      '.lighthouseci/',
+      'node_modules/',
+      '**/types.generated.d.ts',
+      // Local agent tooling (skills and their scripts), not part of the site.
+      '.agents/',
+      '.claude/',
+      '.codex/',
+      '.github/skills/',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,
