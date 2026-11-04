@@ -23,7 +23,7 @@ Design systems first: a specialist who builds and runs design systems at scale, 
 
 The claim no neighbouring portfolio can copy is the record itself: one design system adopted across an airline (millions of passengers), an architecture rebuilt for a copper-mining supplier platform, and a site that publicly documents its own tokens and build.
 
-Open item: the contact copy still says "Open to Senior Frontend Engineer roles"; it hasn't been aligned with this positioning yet.
+The hero role, contact copy, page titles, meta description and JSON-LD `jobTitle` all follow this positioning; keep them in step when it changes.
 
 ## Operating Context
 

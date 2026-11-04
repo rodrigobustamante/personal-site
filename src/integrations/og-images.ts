@@ -68,7 +68,7 @@ export function cardFromHtml(html: string): { key: string; card: OgCard } | unde
   const es = lang === 'es';
 
   if (key.startsWith('home/')) {
-    // "Rodrigo Bustamante — Senior Software Engineer · Design Engineer & Senior FrontEnd Engineer"
+    // "Rodrigo Bustamante — Design Systems & Frontend Architecture"
     const [name, ...rest] = rawTitle.split(' — ');
     return {
       key,

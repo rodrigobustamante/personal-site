@@ -4,7 +4,7 @@ export interface Props {
 }
 const { lang } = Astro.props;
 const href = lang ? `/blog/${lang}` : '/blog';
-const label = lang === 'es' ? 'Volver al Blog' : lang === 'en' ? 'Back to Blog' : null;
+const label = lang === 'es' ? 'Volver al blog' : lang === 'en' ? 'Back to Blog' : null;
 ---
 
 <div class="blog-wrap" style="padding-top: 0; padding-bottom: 0;">

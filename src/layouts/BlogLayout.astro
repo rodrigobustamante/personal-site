@@ -479,6 +479,15 @@ const resolvedOgImage = ogImage ?? `/og/blog/${resolvedLang}.png`;
         color: var(--muted);
         margin-bottom: 32px;
       }
+      .not-found p:has(+ p) {
+        margin-bottom: 8px;
+      }
+      .not-found-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
     </style>
   </Fragment>
   <SiteHeader lang={resolvedLang} variant="blog" translationUrl={translationUrl} />

@@ -31,8 +31,8 @@ interface Props {
   structuredData?: Record<string, unknown>[];
 }
 const {
-  title = 'Rodrigo Bustamante — Senior Software Engineer · Design Engineer & Senior FrontEnd Engineer',
-  description = 'Rodrigo Bustamante — Senior Software Engineer, Design Engineer & Senior FrontEnd Engineer. 9 years building scalable frontend systems and design systems for global brands.',
+  title = 'Rodrigo Bustamante — Design Systems & Frontend Architecture',
+  description = 'Rodrigo Bustamante builds design systems and frontend platforms: 9 years of engineering, including a design system adopted by 50+ teams at LATAM Airlines.',
   lang = 'en',
   ogImage = `/og/home/${Astro.props.lang ?? 'en'}.png`,
   canonicalURL = Astro.url.href,
@@ -72,7 +72,7 @@ const jsonLd = JSON.stringify({
       '@type': 'Person',
       '@id': PERSON_ID,
       name: 'Rodrigo Bustamante',
-      jobTitle: 'Senior Software Engineer · Design Engineer & Senior FrontEnd Engineer',
+      jobTitle: 'Software Architect · Design Systems & Frontend Architecture',
       url: 'https://rodrigobustamante.cl',
       image: ogImageAbs,
       address: {

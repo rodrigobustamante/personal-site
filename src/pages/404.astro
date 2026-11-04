@@ -6,7 +6,7 @@ import { getHomePermalink } from '~/utils/permalinks';
 export const prerender = true;
 ---
 
-<BlogLayout title="404 — Page Not Found" noindex>
+<BlogLayout title="404 — Page not found" noindex>
   <div class="not-found">
     <GradientAscii options={{ shape: 'eclipse', scale: 2, cellSize: 16, glyphOpacity: 0.7, gradientOpacity: 0.5 }} />
     <div class="not-found-inner">
@@ -14,10 +14,17 @@ export const prerender = true;
         404
       </div>
       <h2>Page not found</h2>
-      <p>The page you're looking for doesn't exist or has been moved.</p>
-      <a href={getHomePermalink()} class="btn btn-ghost">
-        Back to homepage
-      </a>
+      {/* One page serves every unknown URL in both languages, so it speaks both. */}
+      <p>This page doesn't exist. It may have moved, or the link has a typo.</p>
+      <p lang="es">Esta página no existe. Puede que se haya movido o que el enlace tenga un error.</p>
+      <div class="not-found-actions">
+        <a href={getHomePermalink()} class="btn btn-ghost" hreflang="en">
+          Go to the home page
+        </a>
+        <a href="/es" class="btn btn-ghost" lang="es" hreflang="es">
+          Ir al inicio en español
+        </a>
+      </div>
     </div>
   </div>
 </BlogLayout>
