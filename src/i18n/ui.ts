@@ -141,6 +141,10 @@ export const ui = {
     // contact
     'contact.title': "Let's talk.",
     'contact.sub': 'Open to design system and frontend architecture roles. Email is the fastest way to reach me.',
+    'contact.note': 'Madrid time (CET) · I usually reply within a day.',
+    'contact.copy': 'Copy email',
+    'contact.copied': 'Email address copied.',
+    'contact.copyFail': "Couldn't copy it. Select the address on the button above.",
 
     // blog
     'blog.description': 'Articles on web performance, frontend engineering, and software craftsmanship.',
@@ -302,6 +306,10 @@ export const ui = {
     'contact.title': 'Hablemos.',
     'contact.sub':
       'Abierto a roles de design systems y arquitectura frontend. La forma más rápida de contactarme es por email.',
+    'contact.note': 'Hora de Madrid (CET) · Suelo responder en un día.',
+    'contact.copy': 'Copiar email',
+    'contact.copied': 'Dirección de email copiada.',
+    'contact.copyFail': 'No se pudo copiar. Selecciona la dirección en el botón de arriba.',
 
     // blog
     'blog.description': 'Artículos sobre rendimiento web, ingeniería frontend y oficio de software.',
