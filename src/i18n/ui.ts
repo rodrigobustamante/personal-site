@@ -61,6 +61,9 @@ export const ui = {
     'work.meta.scope': 'Scope',
     'work.meta.stack': 'Stack',
     'work.read': 'Read the case study',
+    'work.next': 'Next case',
+    'work.close.email': 'Email me',
+    'work.close.more': 'Keep reading',
     'selected.sub': 'Three systems to open first, starting with the design system.',
     'selected.all': 'All work',
 
@@ -222,6 +225,9 @@ export const ui = {
     'work.meta.scope': 'Alcance',
     'work.meta.stack': 'Stack',
     'work.read': 'Leer el caso de estudio',
+    'work.next': 'Siguiente caso',
+    'work.close.email': 'Escríbeme',
+    'work.close.more': 'Seguir leyendo',
     'selected.sub': 'Tres sistemas para abrir primero, empezando por el design system.',
     'selected.all': 'Todos los trabajos',
 
