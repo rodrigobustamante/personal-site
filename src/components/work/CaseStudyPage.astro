@@ -5,7 +5,8 @@ import SiteHeader from '~/components/portfolio/SiteHeader.astro';
 import SiteFooter from '~/components/portfolio/SiteFooter.astro';
 import { useTranslations, type Lang } from '~/i18n/ui';
 import { localizedPath } from '~/i18n/paths';
-import { workScene, workSlug } from '~/utils/work';
+import { getWork, workScene, workSlug } from '~/utils/work';
+import { SOCIALS } from '~/utils/config';
 import Diorama from '~/components/portfolio/dioramas/Diorama.astro';
 import { breadcrumbs, caseStudy } from '~/utils/structured-data';
 
@@ -26,6 +27,10 @@ const meta = [
   ['work.meta.scope', data.scope],
   ['work.meta.stack', data.stack.join(', ')],
 ] as const;
+
+// The next case in /work order, wrapping round, so every case ends on another.
+const work = await getWork(lang);
+const next = work[(work.findIndex((e) => e.id === entry.id) + 1) % work.length];
 
 const ogImage = `/og/work/${slug}/${lang}.png`;
 const abs = (path: string) => new URL(path, Astro.site).href;
@@ -79,6 +84,37 @@ const structuredData = [
       </div>
 
       <Content />
+
+      <!-- The end of a case is the reader's highest-intent moment: give it
+           the next steps (write, take the CV, keep reading). -->
+      <footer class="cs-close">
+        <h2 class="cs-close-title">{t('contact.title')}</h2>
+        <p class="cs-close-sub">{t('contact.sub')}</p>
+        <div class="cs-close-actions">
+          <a class="btn btn-primary" href={`mailto:${SOCIALS.email}`}>
+            {t('work.close.email')}
+          </a>
+          <a class="btn btn-ghost" href="/uploads/cv-rodrigo-bustamante-general.pdf" target="_blank" rel="noopener">
+            {t('hero.cta.cv')}
+          </a>
+        </div>
+        <nav class="cs-close-more" aria-label={t('work.close.more')}>
+          {next && next.id !== entry.id && (
+            <a class="cs-link" href={localizedPath(`/work/${workSlug(next)}`, lang)}>
+              {t('work.next')}: {next.data.title}
+              <span class="arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          )}
+          <a class="cs-link" href={localizedPath('/system', lang)}>
+            {t('hero.proof')}
+            <span class="arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </nav>
+      </footer>
     </article>
   </main>
   <SiteFooter lang={lang} />
@@ -132,13 +168,17 @@ const structuredData = [
 
   .cs-meta {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* Two columns: four items make a 2×2 with no empty cell; an odd last one spans. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2px;
     background: var(--line-soft);
     border: 1px solid var(--line-soft);
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     margin: 48px 0 0;
+  }
+  .cs-meta-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
   .cs-meta-item {
     background: var(--paper);
@@ -194,6 +234,7 @@ const structuredData = [
     color: var(--ink-soft);
     line-height: 1.65;
     text-wrap: pretty;
+    max-width: 60ch;
     margin-bottom: 16px;
   }
   .cs-section p:last-child,
@@ -219,7 +260,7 @@ const structuredData = [
     gap: 2px;
     background: var(--line-soft);
     border: 1px solid var(--line-soft);
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
   }
   @media (max-width: 560px) {
@@ -245,5 +286,49 @@ const structuredData = [
     font-size: 15px;
     color: var(--ink-soft);
     line-height: 1.5;
+  }
+
+  /* ——— Closing: next steps ——— */
+  .cs-close {
+    margin-top: clamp(72px, 10vh, 112px);
+    padding-top: clamp(40px, 6vh, 64px);
+    border-top: 1px solid var(--line);
+  }
+  .cs-close-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 50px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .cs-close-sub {
+    margin-top: 14px;
+    max-width: 52ch;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .cs-close-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .cs-close-more {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 36px;
+  }
+  /* Block, not inline-flex: when a label wraps, its arrow follows the text. */
+  .cs-close-more .cs-link {
+    display: block;
+    width: fit-content;
+    margin-top: 0;
+  }
+  .cs-close-more .cs-link .arrow {
+    margin-left: 4px;
   }
 </style>
