@@ -128,8 +128,6 @@ export const ui = {
     'edu.industries.v': 'Retail, payments, healthcare, corporate innovation and aviation.',
     'edu.languages.k': 'Languages',
     'edu.languages.v': 'English (B2, professional working). Spanish (native).',
-    'edu.work-auth.k': 'Work authorization',
-    'edu.work-auth.v': 'Chilean citizen.',
 
     // projects
 
@@ -293,8 +291,6 @@ export const ui = {
     'edu.industries.v': 'Retail, pagos, salud, innovación corporativa y aviación.',
     'edu.languages.k': 'Idiomas',
     'edu.languages.v': 'Inglés (B2, profesional). Español (nativo).',
-    'edu.work-auth.k': 'Autorización de trabajo',
-    'edu.work-auth.v': 'Ciudadano chileno.',
 
     // projects
 
