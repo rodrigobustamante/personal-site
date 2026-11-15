@@ -131,7 +131,6 @@ const timeline: {
             <span class="dot"></span>
             {t('hero.remote')}
           </div>
-          <p class="hero-auth">{t('hero.workauth')}</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#contact">
               <svg
@@ -590,20 +589,16 @@ const timeline: {
     .hero {
       padding-top: 32px;
     }
-    /* Location, remote and work authorization as three short stacked lines. */
+    /* Location and remote as two short stacked lines. */
     .hero-grid .hero-meta {
       flex-direction: column;
       align-items: flex-start;
       gap: 2px;
-      margin-bottom: 2px;
+      margin-bottom: 28px;
       font-size: 15px;
     }
     .hero-grid .hero-meta .dot {
       display: none;
-    }
-    .hero-grid .hero-auth {
-      margin: 0 0 28px;
-      font-size: 15px;
     }
     .hero-grid .hero-stats {
       grid-template-columns: 1fr 1fr;
@@ -687,11 +682,6 @@ const timeline: {
   .hero-proof .arrow {
     color: var(--accent-ink);
     margin-left: 4px;
-  }
-  .hero-auth {
-    margin: -24px 0 36px;
-    font-size: 16px;
-    color: var(--muted);
   }
   .hero-meta .dot {
     width: 4px;
