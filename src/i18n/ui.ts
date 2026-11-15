@@ -1,7 +1,6 @@
 export const ui = {
   en: {
     'nav.about': 'About',
-    'hero.workauth': "Exempt from Spain's Labour Market Test",
     'hero.proof': "This site's tokens and components are public",
     'skills.title': 'Skills',
     'about.title': 'About',
@@ -130,7 +129,7 @@ export const ui = {
     'edu.languages.k': 'Languages',
     'edu.languages.v': 'English (B2, professional working). Spanish (native).',
     'edu.work-auth.k': 'Work authorization',
-    'edu.work-auth.v': "Chilean citizen. Exempt from Spain's Labour Market Test by bilateral treaty.",
+    'edu.work-auth.v': 'Chilean citizen.',
 
     // projects
 
@@ -164,7 +163,6 @@ export const ui = {
 
   es: {
     'nav.about': 'Sobre mí',
-    'hero.workauth': 'Exento del Test de Mercado Laboral de España',
     'hero.proof': 'Los tokens y componentes de este sitio son públicos',
     'skills.title': 'Skills',
     'about.title': 'Sobre mí',
@@ -296,7 +294,7 @@ export const ui = {
     'edu.languages.k': 'Idiomas',
     'edu.languages.v': 'Inglés (B2, profesional). Español (nativo).',
     'edu.work-auth.k': 'Autorización de trabajo',
-    'edu.work-auth.v': 'Ciudadano chileno. Exento del Test de Mercado Laboral de España por tratado bilateral.',
+    'edu.work-auth.v': 'Ciudadano chileno.',
 
     // projects
 
